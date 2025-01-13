@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent  {
- 
+  title!: string;
+  description!: string;
+  createdAt!: Date;
+  snaps!: number;
+  imageUrl!: string;
   snapButtonText!: string;
   userHasSnapped!: boolean;
 
