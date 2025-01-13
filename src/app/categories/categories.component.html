@@ -1,4 +1,13 @@
 <p>categories works perfectly!</p>
+
+<!-- string interpolation   Il suffit de mettre le nom de la variable à afficher entre doubles accolades{{ }} dans le HTML -->
+
 <h2>{{ title }}</h2>
 <p>{{ description }}</p>
 <p>crée le {{ createdAt }}</p>
+<p>
+<!--template -->  
+  <button (click)="onSnap()">{{ snapButtonText }}</button>
+  🤌 {{ snaps }}
+</p>
+<img [src]="imageUrl" [alt]="logo" />
