@@ -2,12 +2,14 @@
 
 <!-- string interpolation   Il suffit de mettre le nom de la variable à afficher entre doubles accolades{{ }} dans le HTML -->
 
-<h2>{{ title }}</h2>
-<p>{{ description }}</p>
-<p>crée le {{ createdAt }}</p>
+<h2>{{ faceSnap.title }}</h2>
+<p>{{ faceSnap.description }}</p>
+<p>crée le {{ faceSnap.createdAt }}</p>
+<img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" class="myImage" />
 <p>
-<!--template -->  
+  <!--template -->
+  <!-- Elle permet de lier une méthode TypeScript à un événement du DOM.
+   pour chaque clic sur un bouton, on appellera la méthode liée-->
   <button (click)="onSnap()">{{ snapButtonText }}</button>
-  🤌 {{ snaps }}
+  🤌 {{ faceSnap.snaps }}
 </p>
-<img [src]="imageUrl" [alt]="logo" />
