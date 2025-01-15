@@ -25,7 +25,7 @@ ngOnInit(): void {
   );
 
   this.myOtherCategorie = new categorie(
-    'paris',
+    'My work',
    "My Best wishes iin this life is to stay in good health",
    "https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_960_720.jpg",
    new Date(),

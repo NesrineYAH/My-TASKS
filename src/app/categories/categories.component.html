@@ -3,9 +3,18 @@
 <!-- string interpolation   Il suffit de mettre le nom de la variable à afficher entre doubles accolades{{ }} dans le HTML -->
 
 <h2>{{ faceSnap.title }}</h2>
+<br />
+<br />
+<br />
+@if(faceSnap.location) {
+<p>Localisation: {{ faceSnap.location }}</p>
+} @else {
+<p>Localisation non spécifiée</p>
+}
+<img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" class="myImage" />
 <p>{{ faceSnap.description }}</p>
 <p>crée le {{ faceSnap.createdAt }}</p>
-<img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" class="myImage" />
+
 <p>
   <!--template -->
   <!-- Elle permet de lier une méthode TypeScript à un événement du DOM.
