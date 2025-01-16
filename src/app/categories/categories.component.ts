@@ -1,9 +1,13 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { categorie } from '../models/categorie';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-categories',
-  imports: [],
+  imports: [
+    NgStyle, 
+    NgClass
+  ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })

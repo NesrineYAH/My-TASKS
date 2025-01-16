@@ -1,24 +1,27 @@
-<p>categories works perfectly!</p>
-
 <!-- string interpolation   Il suffit de mettre le nom de la variable à afficher entre doubles accolades{{ }} dans le HTML -->
+<div class="face-snap-card" [ngClass]="{ snapped: userHasSnapped }">
+  <h2>{{ faceSnap.title }}</h2>
+  <br />
+  @if(faceSnap.location) {
+  <p>Localisation: {{ faceSnap.location }}</p>
+  } @else {
+  <p>Localisation non spécifiée</p>
+  }
+  <img
+    [src]="faceSnap.imageUrl"
+    [alt]="faceSnap.title"
+    class="face-snap-card"
+  />
+  <p>{{ faceSnap.description }}</p>
+  <p>crée le {{ faceSnap.createdAt }}</p>
 
-<h2>{{ faceSnap.title }}</h2>
-<br />
-<br />
-<br />
-@if(faceSnap.location) {
-<p>Localisation: {{ faceSnap.location }}</p>
-} @else {
-<p>Localisation non spécifiée</p>
-}
-<img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" class="myImage" />
-<p>{{ faceSnap.description }}</p>
-<p>crée le {{ faceSnap.createdAt }}</p>
-
-<p>
-  <!--template -->
-  <!-- Elle permet de lier une méthode TypeScript à un événement du DOM.
+  <p>
+    <!--template -->
+    <!-- Elle permet de lier une méthode TypeScript à un événement du DOM.
    pour chaque clic sur un bouton, on appellera la méthode liée-->
-  <button (click)="onSnap()">{{ snapButtonText }}</button>
-  🤌 {{ faceSnap.snaps }}
-</p>
+    <button (click)="onSnap()">{{ snapButtonText }}</button>
+    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">
+      🤌 {{ faceSnap.snaps }}</span
+    >
+  </p>
+</div>
