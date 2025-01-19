@@ -1,19 +1,21 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { categorie } from '../models/categorie';
-import { NgClass, NgStyle } from '@angular/common';
+import { DatePipe, NgClass, NgStyle, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-categories',
+  standalone: true,
   imports: [
     NgStyle, 
-    NgClass
+    NgClass, 
+    UpperCasePipe, 
+    DatePipe, 
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
   @Input() faceSnap!: categorie;
-
   snapButtonText!: string;
   userHasSnapped!: boolean;
 
