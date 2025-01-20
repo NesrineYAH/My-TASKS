@@ -18,6 +18,10 @@ constructor(public title: string,
     setLocation(location: string): void {
      this.location = location; 
     }
+    withLocation(location: string): categorie {
+      this.setLocation(location);
+      return this;
+    }
 }
 
 
