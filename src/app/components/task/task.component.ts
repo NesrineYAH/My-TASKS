@@ -1,14 +1,12 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/Task';
 import { TaskService } from '../../services/task.service';
 
 @Component({
-  selector: 'app-task',
-  imports: [],
+  selector: 'app-task',  // doit correspondre à la balise utilisée dans app.component.html
   templateUrl: './task.component.html',
-  styleUrl: './task.component.scss'
+  styleUrl: './task.component.scss' // note le "s" à la fin de styleUrls
 })
-
 export class TaskComponent implements OnInit {
   tasks: Task[] = [];
 
@@ -18,12 +16,14 @@ export class TaskComponent implements OnInit {
     this.tasks = this.taskService.getTasks();
   }
 
-  /*changeStatus(task: Task, status: 'todo' | 'in_progress' | 'done') {
+  changeStatus(task: Task, status: 'todo' | 'in_progress' | 'done') {
     this.taskService.updateTask(task.id!, status);
-  }*/
+  }
 
   toggleReminder(task: Task) {
-    this.taskService.updateTask(task.id!, undefined, !task.reminder);
+    task.reminder = !(task.reminder ?? false);
+    this.taskService.updateTask(task.id!, undefined, task.reminder);
+
   }
 
   deleteTask(task: Task) {
@@ -31,5 +31,3 @@ export class TaskComponent implements OnInit {
     this.tasks = this.taskService.getTasks();
   }
 }
-
-

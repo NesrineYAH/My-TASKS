@@ -9,11 +9,8 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent {
 title: string = 'Task Tracker';
-showAddTask: boolean = false;
-subscription!: Subscription;
 
-constructor() {
-  
-}
+
+constructor() {}
 
 }
