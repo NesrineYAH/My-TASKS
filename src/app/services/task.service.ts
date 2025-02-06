@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/Task';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-private tasks: Task[] = [];
+
+  private showAddTask: boolean = false;
+  private subject = new Subject<any>();
+  private tasks: Task[] = [];
   constructor() {}
 
   // Ajouter une tâche avec ou sans rappel
@@ -38,9 +42,12 @@ addTask(title: string, description?: string, dueDate?: Date): Task {
     }
   }
 
-
  // Supprimer une tâche
  deleteTask(id: number): void {
   this.tasks =  this.tasks.filter(t => t.id !== id);
  }
+ toggleAddTask(): void {
+  this.showAddTask = !this.showAddTask;
+  this.subject.next(this.showAddTask);
+}
 }
