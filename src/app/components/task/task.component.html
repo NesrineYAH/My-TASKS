@@ -1,16 +1,16 @@
-<!-- <div *ngFor="let task of tasks" class="task-card"> -->
-@for (task of tasks; track task.title) {
-<div class="task-card">
-  <h3>{{ task.title }}</h3>
+<div *ngFor="let task of tasks" class="task-card">
+  <h3>{{ task.title }} - {{ task.status }}</h3>
   <p>{{ task.description }}</p>
   <p><strong>Statut:</strong> {{ task.status }}</p>
   <p><strong>Échéance:</strong>{{ task.dueDate }}</p>
 
-  <label>
+  <label class="LabelReminder">
     <input
+      class="InputReminder"
       type="checkbox"
       [checked]="task.reminder"
-      (change)="toggleReminder(task)"/>
+      (change)="toggleReminder(task)"
+    />
     Activer le rappel
   </label>
 
@@ -18,4 +18,3 @@
   <button (click)="changeStatus(task, 'done')">Terminé</button>
   <button (click)="deleteTask(task)">Supprimer</button>
 </div>
-}

@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/Task';
 import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,46 +16,40 @@ import { Observable, Subject } from 'rxjs';
 export class TaskService {
 
   private showAddTask: boolean = false;
-  private subject = new Subject<any>();
+private subject = new Subject<any>();
   private tasks: Task[] = [];
-  constructor() {}
+  private apiUrl = 'http://localhost:3000/tasks';
 
-  // Ajouter une tâche avec ou sans rappel
-addTask(title: string, description?: string, dueDate?: Date): Task {
-  const newTask = new Task(title, 'todo', description, dueDate);
-  newTask.id = this.tasks.length+1;  //// Simuler un ID auto-incrémenté
-  this.tasks.push(newTask);
-  return newTask;
-}
+  constructor(private http: HttpClient) {}
+
+
  // Récupérer toutes les tâches 
- getTasks(): Task[] {
-  return this.tasks;
+ getTasks(): Observable<Task[]> {
+  return  this.http.get<Task[]>(this.apiUrl);
  }
- // Mettre à jours le statut d'une tâche 
-/*updateTask(id: number, status?: 'todo' | 'in_progress' | 'done'): void  {
-  const task = this.tasks.find(t => t.id === id);
-  if(task) {
-    if (status) task.status = status;
-    if (reminder !== undefined) task.reminder = reminder;
-    task.updatedAt = new Date();
-  }
- }*/
-  updateTask(id: number, status?: 'todo' | 'in_progress' | 'done', reminder?: boolean) {
-    // Implémentation ici...
-    const task = this.tasks.find(t => t.id === id); 
-    if(task) {
-      if (status) task.status = status;
-      if (reminder !== undefined) task.reminder = reminder;
-      task.updatedAt = new Date();
-    }
-  }
+//Pour une vraie mise à jour côté serveur, utilise plutôt :
+
+updateTask(id: number, status?: 'todo' | 'in_progress' | 'done', reminder?: boolean): Observable<Task> {
+  const taskUpdate = { status, reminder, updatedAt: new Date() };
+  return this.http.put<Task>(`${this.apiUrl}/${id}`, taskUpdate, httpOptions);
+}
+
 
  // Supprimer une tâche
- deleteTask(id: number): void {
-  this.tasks =  this.tasks.filter(t => t.id !== id);
- }
- toggleAddTask(): void {
+ deleteTask(id: number): Observable<void> {
+  const url = `${this.apiUrl}/${id}`;
+  return this.http.delete<void>(url);
+}
+
+toggleAddTask(): void {
   this.showAddTask = !this.showAddTask;
   this.subject.next(this.showAddTask);
 }
+
+  // Ajouter une tâche avec ou sans rappel
+
+    addTask(task: Task): Observable<Task> {
+      return this.http.post<Task>(this.apiUrl, task, httpOptions);
+    }
 }
+
