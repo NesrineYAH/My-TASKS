@@ -1,0 +1,8 @@
+{
+    "tasks":   [
+      { "id": 1, "title": "Faire les courses", "status": "todo", "reminder": true },
+      { "id": 2, "title": "Réviser Angular", "status": "in_progress", "reminder": false },
+      { "id": 3, "title": "Aller à la salle de sport", "status": "done", "reminder": false }
+    ]
+  }
+  
