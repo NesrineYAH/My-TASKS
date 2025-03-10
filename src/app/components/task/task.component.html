@@ -1,20 +1,28 @@
-<div *ngFor="let task of tasks" class="task-card">
-  <h3>{{ task.title }} - {{ task.status }}</h3>
-  <p>{{ task.description }}</p>
-  <p><strong>Statut:</strong> {{ task.status }}</p>
-  <p><strong>Échéance:</strong>{{ task.dueDate }}</p>
+<div id="Card_container">
+  <button btnClick="addTask()">Ajouter un tache</button>
 
-  <label class="LabelReminder">
-    <input
-      class="InputReminder"
-      type="checkbox"
-      [checked]="task.reminder"
-      (change)="toggleReminder(task)"
-    />
-    Activer le rappel
-  </label>
+  <div *ngFor="let task of tasks" class="task-card">
+    <h3>{{ task.title }} - {{ task.status }}</h3>
+    <p>{{ task.description }}</p>
+    <p><strong>Statut:</strong> {{ task.status }}</p>
+    <p><strong>Échéance:</strong>{{ task.dueDate }}</p>
 
-  <button (click)="changeStatus(task, 'in_progress')">En cours</button>
-  <button (click)="changeStatus(task, 'done')">Terminé</button>
-  <button (click)="deleteTask(task)">Supprimer</button>
+    <label class="LabelReminder">
+      <input
+        class="InputReminder"
+        type="checkbox"
+        [checked]="task.reminder"
+        (change)="toggleReminder(task)"
+      />
+      Activer le rappel
+    </label>
+
+    <button (click)="changeStatus(task, 'in_progress')" class="My_Button">
+      En cours
+    </button>
+    <button (click)="changeStatus(task, 'done')" class="My_Button">
+      Terminé
+    </button>
+    <button (click)="deleteTask(task)" class="My_Button">Supprimer</button>
+  </div>
 </div>

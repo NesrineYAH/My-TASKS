@@ -1,13 +1,24 @@
+.Card_container {
+    margin-top: 50px;
+    width: 1500px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .task-card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(143, 17, 17, 0.1);
     padding: 20px;
     margin: 15px 0;
     transition: transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 350px;
+    border: 2px solid red;
 
     &:hover {
         transform: scale(1.02);
@@ -68,6 +79,10 @@
         &:hover {
             opacity: 0.8;
         }
+    }
+
+    .My_Button {
+        color: #2c09aa;
     }
 }
 
