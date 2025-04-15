@@ -1,0 +1,33 @@
+{
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Créer un portfolio",
+        "description": "Ajouter les projets GitHub",
+        "status": "todo",
+        "dueDate": "2025-04-30T00:00:00.000Z",
+        "reminder": true,
+        "createdAt": "2025-04-10T21:05:00.000Z",
+        "updatedAt": "2025-04-10T21:10:00.000Z"
+      },
+      {
+        "id": 2,
+        "title": "Revoir les cours Angular",
+        "description": "Reprendre les bases",
+        "status": "in_progress",
+        "reminder": false,
+        "createdAt": "2025-04-09T19:00:00.000Z",
+        "updatedAt": "2025-04-09T21:00:00.000Z"
+      },
+      {
+        "id": 3,
+        "title": "Commencer le projet SaaS",
+        "description": "Faire la maquette UI",
+        "status": "todo",
+        "reminder": false,
+        "createdAt": "2025-04-09T19:00:00.000Z",
+        "updatedAt": "2025-04-09T21:00:00.000Z"
+      }
+    ]
+  }
+  
