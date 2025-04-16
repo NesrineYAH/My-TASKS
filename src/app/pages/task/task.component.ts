@@ -4,6 +4,7 @@ import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { TaskListsComponent } from "./task-lists/task-lists.component";
 import { ButtonComponent} from "../../components/button/button.component";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-task',  // doit correspondre à la balise utilisée dans app.component.html
@@ -29,6 +30,7 @@ export class TaskComponent implements OnInit {
   loadTasks(): void {
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
+    
     });
   }
 
@@ -52,12 +54,14 @@ export class TaskComponent implements OnInit {
       this.tasks = this.tasks.filter(t => t.id !== task.id);
     });
   }
-
+  newTitle = '';
   addTask(title: string, description?: string, dueDate?: Date): void {
+    
     const newTask = new Task(title, 'todo', description, dueDate);
     this.taskService.addTask(newTask).subscribe((createdTask) => {
       this.tasks.push(createdTask);
     });
+    alert('Tâche ajoutée !');
     console.log('Ajouter une tâche...');
   }
 

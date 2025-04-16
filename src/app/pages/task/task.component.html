@@ -1,6 +1,7 @@
 <div id="Card_container">
   <div *ngFor="let task of tasks" class="task-card">
-    <h3>{{ task.title }} - {{ task.status }}</h3>
+    <h3>{{ task.title }}</h3>
+    <h4>Status: {{ task.status }}</h4>
     <p>{{ task.description }}</p>
     <p><strong>Statut:</strong> {{ task.status }}</p>
     <p><strong>Échéance:</strong>{{ task.dueDate }}</p>
@@ -30,9 +31,7 @@
   (selectTask)="onSelectList($event)"
 ></app-task-lists>
 
-<button mat-raised-button color="primary" btnclick="addTask()">
-  Ajouter une tâche
-</button>
+<button (click)="addTask(newTitle)">Ajouter une tâche</button>
 
 <!-- <div class="task-form">
   <mat-form-field appearance="fill">
