@@ -1,29 +1,44 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
+interface TaskList {
+  name: string;
+  cssClass?: string;
+  // ajoute d'autres propriétés si besoin
+}
+
 @Component({
- standalone: true,
   selector: 'app-task-lists',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './task-lists.component.html',
   styleUrls: ['./task-lists.component.scss']
 })
-export class TaskListsComponent implements OnInit, OnChanges {
-  @Input() lists: Array<{ [key: string]: any }> = [];//Liste des tâches reçues du parent
-  @Output() selectTask: EventEmitter<any>; //Émetteur d'événements vers le parent
 
-  randomColorIndex = 0; // Un index utilisé pour choisir une couleur.
-   //Initialise selectTask comme un EventEmitter, permettant d’émettre des événements.  
-  constructor() {
+export class TaskListsComponent implements OnInit, OnChanges {
+// @Input() lists: Array<{ [key: string]: any }> = [];
+@Input() lists: TaskList[]= [];
+@Output() selectTask: EventEmitter<any>; 
+
+
+  randomColorIndex = 0; 
+ 
+   constructor() {
     this.selectTask = new EventEmitter();
   }
-   // mettre par default  list tasks
   ngOnInit() {
-    this.lists = this.lists || []; // Assure que `lists` n'est jamais `undefined`
+    console.log("Task lists on init:", this.lists);
+    this.lists = this.lists || []; 
     this.updateLists(); //Met à jour la liste des tâches
+    console.log('LISTS:', this.lists);
+
   }
   ngOnChanges() {
+    console.log("Task lists on change:", this.lists);
     this.updateLists(); //Met à jour la liste des tâches quand `@Input lists` change
+    console.log('LISTS:', this.lists);
+
   }
 
   /**

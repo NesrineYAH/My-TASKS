@@ -4,13 +4,14 @@ import { AppComponent } from './app/app.component';
 import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 import { provideHttpClient } from '@angular/common/http';
-
+//import { provideRouter } from '@angular/router';
 
 registerLocaleData(fr.default);
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient()  // 👈 Ajoute ceci pour que `HttpClient` fonctionne
+    provideHttpClient(),
+
   ]
 }).catch(err => console.error(err));
 

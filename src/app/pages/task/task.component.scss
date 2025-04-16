@@ -1,10 +1,11 @@
-.Card_container {
+#Card_container {
     margin-top: 50px;
-    width: 1500px;
-    max-width: 100%;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-self: center;
 }
 
 .task-card {
@@ -14,8 +15,6 @@
     padding: 20px;
     margin: 15px 0;
     transition: transform 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
     gap: 10px;
     width: 350px;
     border: 2px solid red;

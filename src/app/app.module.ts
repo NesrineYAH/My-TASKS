@@ -5,7 +5,8 @@
   //import { TaskService } from './services/task.service';
    import { HeaderComponent } from './components/header/header.component';
    import { ButtonComponent } from './components/button/button.component';
-   import { TaskComponent } from './components/task/task.component';
+   import { TaskComponent } from './pages/task/task.component';
+   import {TaskListsComponent} from "./pages/task/task-lists/task-lists.component";
    import { HttpClientModule } from '@angular/common/http';
 
  @NgModule({
@@ -19,6 +20,7 @@
         HeaderComponent,
          ButtonComponent,
           TaskComponent,
+          TaskListsComponent
   ],
      providers: []
   })

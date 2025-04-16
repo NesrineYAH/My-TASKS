@@ -1,18 +1,18 @@
-<section class="task-lists-container">
+<div class="task-lists-container">
   <span class="recent-title">recent lists</span>
   <ul class="task-lists">
     <li class="no-task-message" *ngIf="!lists.length">
       <span>There is no lists!</span>
     </li>
     <li
-      *ngFor="let list of lists; let i = index"
+      *ngFor="let list of lists"
       (click)="onSelectList(list)"
-    ></li>
+      [ngClass]="list['cssClass']"
+    >
+      {{ list.name }}
+    </li>
     <li class="hide new-item"></li>
     <span class="square square-white"></span>
-
-    <span class="text">Creat new list</span>
+    <span class="text">Creat new list - mes liste de NESRINE</span>
   </ul>
-</section>
-
-<!--  -->
+</div>

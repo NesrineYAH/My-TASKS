@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskListsComponent } from './task-lists/task-lists.component';
-import { TaskComponent } from './task/task.component';
+import { TaskListsComponent } from '../pages/task/task-lists/task-lists.component';
+import { TaskComponent } from '../pages/task/task.component';
 
 @NgModule({
   imports: [
     CommonModule,
-],
-  declarations: [
     TaskListsComponent,
     TaskComponent
+],
+  declarations: [
+
   ],
   exports: [],
 

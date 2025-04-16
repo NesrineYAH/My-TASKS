@@ -4,7 +4,11 @@
     <div class="left-nav">
       <ul>
         <li>
-          <a routerLink="task" routerLinkActive="active">
+          <a
+            href="../task-lists/task-lists.component.html"
+            routerLink="../task-lists/task-lists.component.html"
+            routerLinkActive="active"
+          >
             <!-- *ngIf="isAuth$ | async" -->
             ALL TASKS
           </a>
@@ -12,15 +16,12 @@
         <li>
           <a routerLink="new-task" routerLinkActive="active">
             <!-- *ngIf="isAuth$ | async" -->
-
             ADD TASK
           </a>
         </li>
       </ul>
     </div>
-    <!-- <div class="logo">
-       <div class="logo-image"></div>
-    </div> -->
+ 
     <div class="right-nav">
       <!-- <ul>
         <li>

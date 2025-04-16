@@ -9,17 +9,21 @@
    createdAt?: Date;
    updatedAt?: Date;
   reminder?: boolean;
+  completed?: boolean; 
 
    constructor(
      title: string, 
      status: 'todo' | 'in_progress' | 'done' = 'todo',
      description?: string, 
      dueDate?: Date,
-    reminder: boolean = false // Valeur par défaut
+    reminder: boolean = false, // Valeur par défaut
+    completed: boolean = false
    ) {
    this.title = title;
    this.status = status;
   this.description = description;
+  this.reminder = reminder;
+  this.completed = completed;
    this.dueDate = dueDate;
    this.createdAt = new Date();
    this.updatedAt =  new Date();

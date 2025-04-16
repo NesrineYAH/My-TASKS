@@ -1,0 +1,63 @@
+<div id="Card_container">
+  <div *ngFor="let task of tasks" class="task-card">
+    <h3>{{ task.title }} - {{ task.status }}</h3>
+    <p>{{ task.description }}</p>
+    <p><strong>Statut:</strong> {{ task.status }}</p>
+    <p><strong>Échéance:</strong>{{ task.dueDate }}</p>
+
+    <label class="LabelReminder">
+      <input
+        class="InputReminder"
+        type="checkbox"
+        [checked]="task.reminder"
+        (change)="toggleReminder(task)"
+      />
+      Activer le rappel
+    </label>
+
+    <button (click)="changeStatus(task, 'in_progress')" class="My_Button">
+      En cours
+    </button>
+    <button (click)="changeStatus(task, 'done')" class="My_Button">
+      Terminé
+    </button>
+    <button (click)="deleteTask(task)" class="My_Button">Supprimer</button>
+  </div>
+</div>
+
+<app-task-lists
+  [lists]="lists"
+  (selectTask)="onSelectList($event)"
+></app-task-lists>
+
+<button mat-raised-button color="primary" btnclick="addTask()">
+  Ajouter une tâche
+</button>
+
+<!-- <div class="task-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Titre</mat-label>
+    <input
+      matInput
+      [(ngModel)]="newTaskTitle"
+      placeholder="Entrez le titre de la tâche"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="newTaskDescription"
+      placeholder="Entrez une description"
+    ></textarea>
+  </mat-form-field>
+</div> -->
+
+<!-- Pour afficher les tâches -->
+<!-- <div *ngFor="let task of tasks">
+  <mat-card>
+    <mat-card-title>{{ task.title }}</mat-card-title>
+    <mat-card-content>{{ task.description }}</mat-card-content>
+  </mat-card>
+</div> -->
