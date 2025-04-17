@@ -9,9 +9,15 @@ const taskSchema = new mongoose.Schema({
     default: "todo",
   },
   dueDate: Date,
+
   reminder: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
 
+// 👉 Middleware pour mettre à jour updatedAt avant chaque save
+taskSchema.pre("save", function (next) {
+  this.updatedAt = new Date();
+  next();
+});
 module.exports = mongoose.model("Task", taskSchema);

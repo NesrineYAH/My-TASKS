@@ -1,33 +1,64 @@
 {
-    "tasks": [
-      {
-        "id": 1,
-        "title": "Créer un portfolio",
-        "description": "Ajouter les projets GitHub",
-        "status": "todo",
-        "dueDate": "2025-04-30T00:00:00.000Z",
-        "reminder": true,
-        "createdAt": "2025-04-10T21:05:00.000Z",
-        "updatedAt": "2025-04-10T21:10:00.000Z"
-      },
-      {
-        "id": 2,
-        "title": "Revoir les cours Angular",
-        "description": "Reprendre les bases",
-        "status": "in_progress",
-        "reminder": false,
-        "createdAt": "2025-04-09T19:00:00.000Z",
-        "updatedAt": "2025-04-09T21:00:00.000Z"
-      },
-      {
-        "id": 3,
-        "title": "Commencer le projet SaaS",
-        "description": "Faire la maquette UI",
-        "status": "todo",
-        "reminder": false,
-        "createdAt": "2025-04-09T19:00:00.000Z",
-        "updatedAt": "2025-04-09T21:00:00.000Z"
-      }
-    ]
-  }
-  
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Développer mon application MY_Tasks",
+      "description": "Ajouter les projets GitHub",
+      "status": "todo",
+      "dueDate": "2025-04-30T00:00:00.000Z",
+      "reminder": true,
+      "createdAt": "2025-04-10T21:05:00.000Z",
+      "updatedAt": "2025-04-10T21:10:00.000Z",
+      "priority": "high"
+    },
+    {
+      "id": "2",
+      "title": "Revoir les cours de JAVA, JEST ",
+      "description": "Reprendre les bases",
+      "status": "in_progress",
+      "reminder": false,
+      "createdAt": "2025-04-09T19:00:00.000Z",
+      "updatedAt": "2025-04-09T21:00:00.000Z",
+      "priority": "high"
+    },
+    {
+      "id": "3",
+      "title": "LinkedIn Learning ",
+      "description": "Routine d'apprentissage",
+      "status": "in_progress",
+      "reminder": false,
+      "createdAt": "2025-04-09T19:00:00.000Z",
+      "updatedAt": "2025-04-09T21:00:00.000Z",
+      "priority": "high"
+    },
+    {
+      "id": "4",
+      "title": "Commencer le projet SaaS",
+      "description": "Faire la maquette UI",
+      "status": "todo",
+      "reminder": false,
+      "createdAt": "2025-04-09T19:00:00.000Z",
+      "updatedAt": "2025-04-09T21:00:00.000Z",
+      "priority": "high"
+    },
+    {
+      "id": "c9dc",
+      "title": "",
+      "status": "todo",
+      "createdAt": "2025-04-16T21:52:17.619Z",
+      "updatedAt": "2025-04-16T21:52:17.619Z",
+      "reminder": false,
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": "a074",
+      "title": "",
+      "status": "todo",
+      "createdAt": "2025-04-17T15:58:12.491Z",
+      "updatedAt": "2025-04-17T15:58:12.491Z",
+      "reminder": false,
+      "completed": false
+    }
+  ]
+}
