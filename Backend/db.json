@@ -12,53 +12,44 @@
       "priority": "high"
     },
     {
-      "id": "2",
-      "title": "Revoir les cours de JAVA, JEST ",
-      "description": "Reprendre les bases",
-      "status": "in_progress",
-      "reminder": false,
-      "createdAt": "2025-04-09T19:00:00.000Z",
-      "updatedAt": "2025-04-09T21:00:00.000Z",
-      "priority": "high"
-    },
-    {
-      "id": "3",
-      "title": "LinkedIn Learning ",
-      "description": "Routine d'apprentissage",
-      "status": "in_progress",
-      "reminder": false,
-      "createdAt": "2025-04-09T19:00:00.000Z",
-      "updatedAt": "2025-04-09T21:00:00.000Z",
-      "priority": "high"
-    },
-    {
-      "id": "4",
-      "title": "Commencer le projet SaaS",
-      "description": "Faire la maquette UI",
+      "id": "bc01",
+      "title": "ma liste de course auchan",
       "status": "todo",
-      "reminder": false,
-      "createdAt": "2025-04-09T19:00:00.000Z",
-      "updatedAt": "2025-04-09T21:00:00.000Z",
-      "priority": "high"
+      "priority": "high",
+      "description": "ma liste de course à faire avant le 25 avril",
+      "dueDate": "2025-04-19",
+      "createdAt": "2025-04-17T23:55:51.423Z",
+      "updatedAt": "2025-04-17T23:55:51.423Z"
     },
     {
-      "id": "c9dc",
-      "title": "",
+      "id": "696e",
+      "title": "mon travail",
       "status": "todo",
-      "createdAt": "2025-04-16T21:52:17.619Z",
-      "updatedAt": "2025-04-16T21:52:17.619Z",
-      "reminder": false,
-      "completed": false,
-      "priority": "high"
+      "priority": "medium",
+      "description": "mon travail angular",
+      "dueDate": "2025-04-18",
+      "createdAt": "2025-04-18T00:04:53.813Z",
+      "updatedAt": "2025-04-18T00:04:53.813Z"
     },
     {
-      "id": "a074",
-      "title": "",
+      "id": "1836",
+      "title": "Mon projet cv React",
       "status": "todo",
-      "createdAt": "2025-04-17T15:58:12.491Z",
-      "updatedAt": "2025-04-17T15:58:12.491Z",
-      "reminder": false,
-      "completed": false
+      "priority": "high",
+      "description": "Mon projet cv\nhttps://cv.nesrinebekkar.com",
+      "dueDate": "2025-04-18",
+      "createdAt": "2025-04-18T00:06:09.934Z",
+      "updatedAt": "2025-04-18T00:06:09.934Z"
+    },
+    {
+      "id": "77c8",
+      "title": "manel",
+      "status": "todo",
+      "priority": "medium",
+      "description": "mes traveaux manel",
+      "dueDate": "2025-04-18",
+      "createdAt": "2025-04-18T00:06:55.545Z",
+      "updatedAt": "2025-04-18T00:06:55.545Z"
     }
   ]
 }
