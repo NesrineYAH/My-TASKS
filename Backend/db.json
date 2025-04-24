@@ -1,49 +1,25 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "Développer mon application MY_Tasks",
-      "description": "Ajouter les projets GitHub",
-      "status": "todo",
-      "dueDate": "2025-04-30T00:00:00.000Z",
-      "reminder": true,
-      "createdAt": "2025-04-10T21:05:00.000Z",
-      "updatedAt": "2025-04-10T21:10:00.000Z",
-      "priority": "high"
-    },
-    {
-      "id": "bc01",
-      "title": "ma liste de course auchan",
-      "status": "todo",
-      "priority": "high",
-      "description": "ma liste de course à faire avant le 25 avril",
-      "dueDate": "2025-04-19",
-      "createdAt": "2025-04-17T23:55:51.423Z",
-      "updatedAt": "2025-04-17T23:55:51.423Z"
-    },
-    {
       "id": "696e",
-      "title": "mon travail",
+      "title": "mon travail Github",
       "status": "todo",
       "priority": "medium",
       "description": "mon travail angular",
       "dueDate": "2025-04-18",
       "createdAt": "2025-04-18T00:04:53.813Z",
-      "updatedAt": "2025-04-18T00:04:53.813Z"
-    },
-    {
-      "reminder": true,
-      "updatedAt": "2025-04-21T00:23:14.679Z",
-      "id": "7b63"
+      "updatedAt": "2025-04-18T00:04:53.813Z",
+      "category": "Travail"
     },
     {
       "id": "1300",
-      "title": "",
+      "title": "Autre projet",
       "status": "todo",
       "description": "",
       "priority": "medium",
       "createdAt": "2025-04-21T00:23:25.205Z",
-      "updatedAt": "2025-04-21T00:23:25.205Z"
+      "updatedAt": "2025-04-21T00:23:25.205Z",
+      "category": "Travail"
     },
     {
       "id": "a75a",
@@ -53,7 +29,40 @@
       "priority": "medium",
       "dueDate": "2025-04-21",
       "createdAt": "2025-04-21T00:23:46.140Z",
-      "updatedAt": "2025-04-21T00:23:46.140Z"
+      "updatedAt": "2025-04-21T00:23:46.140Z",
+      "category": "Finances"
+    },
+    {
+      "id": "a63d",
+      "title": "Mon projet JEST ",
+      "description": "C'est un projet SaaS",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2025-04-24",
+      "category": "Travail",
+      "createdAt": "2025-04-23T23:48:05.527Z",
+      "updatedAt": "2025-04-23T23:48:05.527Z"
+    },
+    {
+      "id": "7421",
+      "title": "LE Grand Ménage ",
+      "description": "demain le jeudi ",
+      "status": "todo",
+      "priority": "high",
+      "category": "Maison",
+      "createdAt": "2025-04-23T23:49:09.903Z",
+      "updatedAt": "2025-04-23T23:49:09.903Z"
+    },
+    {
+      "id": "2fdb",
+      "title": "Mon nettoyage ",
+      "description": "nettoyage  du salon",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2025-04-24",
+      "category": "Maison",
+      "createdAt": "2025-04-23T23:50:24.240Z",
+      "updatedAt": "2025-04-23T23:50:24.240Z"
     }
   ]
 }
