@@ -1,0 +1,30 @@
+.lists-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.list-item {
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+/* Les classes de couleur */
+.square-red {
+    background-color: #e57373;
+}
+
+.square-green {
+    background-color: #81c784;
+}
+
+.square-orange {
+    background-color: #ffb74d;
+}
+
+.square-blue {
+    background-color: #64b5f6;
+}

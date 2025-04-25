@@ -4,14 +4,12 @@ import { AppComponent } from './app/app.component';
 import { registerLocaleData } from '@angular/common';
 import * as fr from '@angular/common/locales/fr';
 import { provideHttpClient } from '@angular/common/http';
-//import { provideRouter } from '@angular/router';
+//import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 registerLocaleData(fr.default);
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideHttpClient(),
 
-  ]
-}).catch(err => console.error(err));
-
+bootstrapApplication(AppComponent, appConfig)
+  .catch(err => console.error(err));

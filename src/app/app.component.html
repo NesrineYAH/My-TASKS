@@ -1,15 +1,9 @@
-<app-header></app-header>
-
-<app-button
+<!-- <app-button
   color="showAddTask ? 'red' : 'green' "
   text=" showAddTask ? 'Close' : 'Add' "
   btnClick="toggleAddTask()"
-></app-button>
-<!-- <app-task id="taskSection" *ngIf="isVisible"
-  >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint,
-  ipsam.</app-task
-> -->
+></app-button> -->
 
-<app-task></app-task>
-
-<!--   *ngIf="hasRoute('/')" -->
+<app-header></app-header>
+<!-- <app-task></app-task>  -->
+<router-outlet></router-outlet>

@@ -1,0 +1,63 @@
+<div id="modalBody">
+  <form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="task-form">
+    <input
+      type="text"
+      placeholder="Titre"
+      [(ngModel)]="task.title"
+      name="title"
+      required
+    />
+
+    <textarea
+      placeholder="Description"
+      [(ngModel)]="task.description"
+      name="description"
+    ></textarea>
+
+    <select
+      [(ngModel)]="task.status"
+      name="status"
+      required
+      class="task-form_field"
+    >
+      <option value="todo">À faire</option>
+      <option value="in_progress">En cours</option>
+      <option value="done">Terminé</option>
+    </select>
+    <select
+      class="task-form_field"
+      [(ngModel)]="task.priority"
+      name="priority"
+      placeholder="priority"
+    >
+      <option value="low">Basse</option>
+      <option value="medium">Moyenne</option>
+      <option value="high">Haute</option>
+    </select>
+
+    <select [(ngModel)]="task.category" name="category" required>
+      <option disabled selected value="">Choisir une catégorie</option>
+      <option>Art</option>
+      <option>Étude</option>
+      <option>Sport</option>
+      <option>Divertissement</option>
+      <option>Social</option>
+      <option>Finances</option>
+      <option>Santé</option>
+      <option>Travail</option>
+      <option>Maison</option>
+      <option>Extérieur</option>
+      <option>Alimentation</option>
+      <option>Autre</option>
+    </select>
+
+    <input
+      type="date"
+      [(ngModel)]="task.dueDate"
+      name="dueDate"
+      class="task-form_field"
+    />
+    <button type="submit">Ajouter la tâche</button>
+    <button (click)="close()">Fermer</button>
+  </form>
+</div>

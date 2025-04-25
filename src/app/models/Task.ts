@@ -1,32 +1,35 @@
- export class Task {
-   id?: number;
-   title?: string;
-   description?: string;
-   text?: string;
-   day?: string;
-   status?: 'todo' | 'in_progress' | 'done';
-   dueDate?: Date;
-   createdAt?: Date;
-   updatedAt?: Date;
+export class Task {
+  id?: number;
+  title: string;
+  status: 'todo' | 'in_progress' | 'done';
+  description?: string;
+  priority?: 'low' | 'medium' | 'high';
+  dueDate?: Date;
   reminder?: boolean;
-  completed?: boolean; 
+  createdAt?: Date;
+  updatedAt?: Date;
+  category?: string;
+  listId?: number; 
 
-   constructor(
-     title: string, 
-     status: 'todo' | 'in_progress' | 'done' = 'todo',
-     description?: string, 
-     dueDate?: Date,
-    reminder: boolean = false, // Valeur par défaut
-    completed: boolean = false
-   ) {
-   this.title = title;
-   this.status = status;
-  this.description = description;
-  this.reminder = reminder;
-  this.completed = completed;
-   this.dueDate = dueDate;
-   this.createdAt = new Date();
-   this.updatedAt =  new Date();
-   }
- }
+  constructor(
+    title: string,
+    status: 'todo' | 'in_progress' | 'done',
+    description?: string,
+    priority: 'low' | 'medium' | 'high' = 'medium',
+    dueDate?: Date, 
+    category?: string,
+    listId?: number
 
+  ) {
+    this.title = title;
+    this.status = status;
+    this.description = description;
+    this.priority = priority;
+    this.dueDate = dueDate;
+    this.category = category;
+    this.createdAt = new Date();
+    this.updatedAt = new Date();
+    this.listId = listId;
+
+  }
+}
