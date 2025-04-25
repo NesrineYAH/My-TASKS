@@ -1,30 +1,43 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
+
 const taskListRoutes = require("./routes/taskList.routes");
 const taskRoutes = require("./routes/task.routes");
+
 const app = express();
 const PORT = 3000;
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/taskmanager", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Connexion MongoDB
+mongoose
+  .connect("mongodb://localhost:27017/taskmanager", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("✅ Connecté à MongoDB");
+  })
+  .catch((err) => {
+    console.error("❌ Erreur de connexion MongoDB:", err);
+  });
 
-app.use("/api/tasks", taskRoutes); // <= Ton endpoint
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-
-const taskRoutes = require("./routes/tasks"); // adapte le chemin si nécessaire
-app.use("/api/tasks", taskRoutes);
+// Routes API
 app.use("/api/lists", taskListRoutes);
+app.use("/api/tasks", taskRoutes);
 
-const listRoutes = require("./routes/list.routes");
-app.use("/api/lists", listRoutes);
-app.listen(3000, () => {
-  console.log("Serveur démarré sur http://localhost:3000");
+// Pour le déploiement Angular (optionnel pour prod)
+app.use(express.static(path.join(__dirname, "dist/frontend-name")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/frontend-name/index.html"));
+});
+
+// Lancement du serveur
+app.listen(PORT, () => {
+  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
 });

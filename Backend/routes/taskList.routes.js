@@ -1,12 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
-const TaskList = db.TaskList;
+const TaskList = require("../models/taskList.model");
 
 // Get all lists
 router.get("/", async (req, res) => {
-  const lists = await TaskList.findAll();
-  res.json(lists);
+  try {
+    const { name } = req.query; // /api/lists?name=course
+    const filter = name ? { name: new RegExp(name, "i") } : {};
+    const lists = await TaskList.find(filter);
+    res.json(lists);
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur" });
+  }
 });
 
 // Create a new list
