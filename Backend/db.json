@@ -1,68 +1,57 @@
 {
   "tasks": [
     {
-      "id": "696e",
-      "title": "mon travail Github",
+      "id": "38bc",
+      "title": "mes shoping",
+      "description": "mes shoping sur shein ",
       "status": "todo",
       "priority": "medium",
-      "description": "mon travail angular",
-      "dueDate": "2025-04-18",
-      "createdAt": "2025-04-18T00:04:53.813Z",
-      "updatedAt": "2025-04-18T00:04:53.813Z",
-      "category": "Travail"
+      "dueDate": "2025-04-25",
+      "category": "Finances",
+      "createdAt": "2025-04-24T23:32:44.538Z",
+      "updatedAt": "2025-04-24T23:32:44.538Z"
     },
     {
-      "id": "1300",
-      "title": "Autre projet",
+      "id": "65c3",
+      "title": "LE Grand Ménage",
+      "description": "Mon grand Ménage ",
       "status": "todo",
-      "description": "",
       "priority": "medium",
-      "createdAt": "2025-04-21T00:23:25.205Z",
-      "updatedAt": "2025-04-21T00:23:25.205Z",
-      "category": "Travail"
+      "dueDate": "2025-04-28",
+      "category": "Maison",
+      "createdAt": "2025-04-24T23:35:08.156Z",
+      "updatedAt": "2025-04-24T23:35:08.156Z"
     },
     {
-      "id": "a75a",
-      "title": "mes achat",
-      "description": "shein",
+      "id": "74b5",
+      "title": " JEST",
+      "description": "Mon projet JEST SaaS",
       "status": "todo",
       "priority": "medium",
-      "dueDate": "2025-04-21",
-      "createdAt": "2025-04-21T00:23:46.140Z",
-      "updatedAt": "2025-04-21T00:23:46.140Z",
-      "category": "Finances"
-    },
-    {
-      "id": "a63d",
-      "title": "Mon projet JEST ",
-      "description": "C'est un projet SaaS",
-      "status": "todo",
-      "priority": "medium",
-      "dueDate": "2025-04-24",
+      "dueDate": "2025-04-27",
       "category": "Travail",
-      "createdAt": "2025-04-23T23:48:05.527Z",
-      "updatedAt": "2025-04-23T23:48:05.527Z"
+      "createdAt": "2025-04-24T23:36:48.367Z",
+      "updatedAt": "2025-04-24T23:36:48.367Z"
     },
     {
-      "id": "7421",
-      "title": "LE Grand Ménage ",
-      "description": "demain le jeudi ",
-      "status": "todo",
-      "priority": "high",
-      "category": "Maison",
-      "createdAt": "2025-04-23T23:49:09.903Z",
-      "updatedAt": "2025-04-23T23:49:09.903Z"
-    },
-    {
-      "id": "2fdb",
-      "title": "Mon nettoyage ",
-      "description": "nettoyage  du salon",
+      "id": "3908",
+      "title": "carrefour paris",
+      "description": "Mes Achats à carrefour ",
       "status": "todo",
       "priority": "medium",
-      "dueDate": "2025-04-24",
       "category": "Maison",
-      "createdAt": "2025-04-23T23:50:24.240Z",
-      "updatedAt": "2025-04-23T23:50:24.240Z"
+      "createdAt": "2025-04-24T23:37:46.287Z",
+      "updatedAt": "2025-04-24T23:37:46.287Z"
+    },
+    {
+      "id": "764c",
+      "title": "carrefour paris",
+      "description": "mes course ",
+      "status": "todo",
+      "priority": "medium",
+      "category": "Maison",
+      "createdAt": "2025-04-24T23:38:16.903Z",
+      "updatedAt": "2025-04-24T23:38:16.903Z"
     }
   ]
 }
