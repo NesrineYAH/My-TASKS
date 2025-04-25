@@ -1,12 +1,11 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-
 const router = express.Router();
 
 // GET /api/lists
 router.get("/", (req, res) => {
-  const filePath = path.join(__dirname, "../data/lists.json");
+  const filePath = path.join(__dirname, "../lists.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
