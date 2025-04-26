@@ -1,28 +1,6 @@
 {
   "tasks": [
     {
-      "id": "38bc",
-      "title": "mes shoping",
-      "description": "mes shoping sur shein ",
-      "status": "todo",
-      "priority": "medium",
-      "dueDate": "2025-04-25",
-      "category": "Finances",
-      "createdAt": "2025-04-24T23:32:44.538Z",
-      "updatedAt": "2025-04-24T23:32:44.538Z"
-    },
-    {
-      "id": "65c3",
-      "title": "LE Grand Ménage",
-      "description": "Mon grand Ménage ",
-      "status": "todo",
-      "priority": "medium",
-      "dueDate": "2025-04-28",
-      "category": "Maison",
-      "createdAt": "2025-04-24T23:35:08.156Z",
-      "updatedAt": "2025-04-24T23:35:08.156Z"
-    },
-    {
       "id": "74b5",
       "title": " JEST",
       "description": "Mon projet JEST SaaS",
@@ -84,6 +62,29 @@
       "priority": "medium",
       "createdAt": "2025-04-25T22:55:50.861Z",
       "updatedAt": "2025-04-25T22:55:50.861Z"
+    },
+    {
+      "id": "d891",
+      "title": "",
+      "description": "",
+      "status": "todo",
+      "priority": "medium",
+      "createdAt": "2025-04-26T21:36:06.865Z",
+      "updatedAt": "2025-04-26T21:36:06.865Z"
+    }
+  ],
+  "lists": [
+    {
+      "id": "1",
+      "name": "Liste première"
+    },
+    {
+      "id": "2",
+      "name": "Liste deuxième"
+    },
+    {
+      "id": "3",
+      "name": "Liste troisième"
     }
   ]
 }
