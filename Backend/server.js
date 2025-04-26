@@ -2,10 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-
-const taskListRoutes = require("./routes/taskList.routes");
-const taskRoutes = require("./routes/task.routes");
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -27,8 +23,11 @@ mongoose
   });
 
 // Routes API
-app.use("/api/lists", taskListRoutes);
+const taskRoutes = require("./routes/task.routes");
 app.use("/api/tasks", taskRoutes);
+
+const taskListRoutes = require("./routes/taskList.routes"); // 👈 Import correct
+app.use("/api/lists", taskListRoutes); // 👈 Connecter les routes de listes
 
 // Pour le déploiement Angular (optionnel pour prod)
 app.use(express.static(path.join(__dirname, "dist/frontend-name")));

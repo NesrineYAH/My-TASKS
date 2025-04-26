@@ -21,14 +21,3 @@ mongoose
   });
 
 module.exports = mongoose;
-
-/**
- const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/taskmanager', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('✅ Connecté à MongoDB'))
-  .catch((err) => console.error('❌ Erreur MongoDB :', err));
-
- */

@@ -1,7 +1,0 @@
-{
-  "lists":  [
-    { "id": 1, "name": "Liste premire" },
-    { "id": 2, "name": "Liste deuxième" },
-    { "id": 3, "name": "liste Troisième" }
-  ]
-}
