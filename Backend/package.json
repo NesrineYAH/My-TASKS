@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "json-server": "json-server --watch db.json --port 3000",
-    "start": "node server.js"
+    "start": "json-server --watch db.json --port 3000"
   },
   "dependencies": {
     "express": "^5.1.0",
