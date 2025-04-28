@@ -25,7 +25,7 @@
     },
     {
       "id": "764c",
-      "listId": 1,
+      "listId": 2,
       "title": "carrefour paris",
       "description": "mes course ",
       "status": "todo",
@@ -81,15 +81,15 @@
   ],
   "lists": [
     {
-      "id": "1",
+      "id": 1,
       "name": "ListeMa"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "ListeFa"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "ListeSa"
     }
   ]
