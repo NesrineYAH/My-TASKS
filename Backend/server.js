@@ -24,10 +24,10 @@ mongoose
 
 // Routes API
 const taskRoutes = require("./routes/task.routes");
-app.use("/api/tasks", taskRoutes);
+const taskListRoutes = require("./routes/taskList.routes");
 
-const taskListRoutes = require("./routes/taskList.routes"); // 👈 Import correct
-app.use("/api/lists", taskListRoutes); // 👈 Connecter les routes de listes
+app.use("./api/tasks.json", taskRoutes); // pour tasks.json dans /api
+app.use("./api/tasks.json", taskListRoutes); // pour lists.json dans /api
 
 // Pour le déploiement Angular (optionnel pour prod)
 app.use(express.static(path.join(__dirname, "dist/frontend-name")));

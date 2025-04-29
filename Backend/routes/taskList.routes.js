@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 
-const listsFilePath = path.join(__dirname, "../lists.json");
+const listsFilePath = path.join(__dirname, "../api/lists.json");
 
 // 👉 Fonction utilitaire : Lire les listes
 function readLists() {
