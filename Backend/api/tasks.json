@@ -87,19 +87,5 @@
       "createdAt": "2025-04-29T19:14:42.610Z",
       "updatedAt": "2025-04-29T19:14:42.610Z"
     }
-  ],
-  "lists": [
-    {
-      "id": "1",
-      "name": "ListeMa"
-    },
-    {
-      "id": "2",
-      "name": "ListeFa"
-    },
-    {
-      "id": "3",
-      "name": "ListeSa"
-    }
   ]
 }

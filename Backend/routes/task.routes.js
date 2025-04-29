@@ -7,7 +7,7 @@ const path = require("path");
 const listsFilePath = path.join(__dirname, "../api/lists.json");
 
 // GET toutes les tâches
-router.get("/:id", (req, res) => {
+router.get("/id", (req, res) => {
   try {
     const tasks = Task.find().sort({ createdAt: -1 });
     res.json(tasks); // <= Envoie le JSON ici
@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
   }
 });
 // PATCH /tasks/:id
-router.patch("/:id", (req, res) => {
+router.patch("/id", (req, res) => {
   try {
     const updates = req.body;
     updates.updatedAt = new Date(); // Met à jour le timestamp
