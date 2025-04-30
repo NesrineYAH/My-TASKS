@@ -1,18 +1,13 @@
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./DB"); // Connexion à MongoDB
+const mongoose = require("./mongoDB/DB"); // Connexion à MongoDB
 const app = express();
-const dataRoutes = require("./data/routes");
-
-
-connectDB();
+const dataRoutes = require("./routes/data.routes");
 
 // Middlewares
 app.use(cors());
 app.use(express.json()); // Pour parser les JSON
 
 // Routes
-app.use("/api/data.json", dataRoutes);
-
-// Export de l'application
+app.use("/api", dataRoutes);
 module.exports = app;

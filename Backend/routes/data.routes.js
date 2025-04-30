@@ -33,10 +33,10 @@ router.get("/tasks/:id", async (req, res) => {
 });
 
 // ✅ GET /api/lists - depuis le fichier JSON
-router.get("/lists", (req, res) => {
+router.get("/lists", async (req, res) => {
   try {
-    const data = getData();
-    res.json(data.lists);
+    const lists = await TaskList.find();
+    res.json(lists);
   } catch (err) {
     res
       .status(500)
@@ -45,10 +45,9 @@ router.get("/lists", (req, res) => {
 });
 
 // ✅ GET /api/lists/:id - liste par ID (JSON local)
-router.get("/lists/:id", (req, res) => {
+router.get("/lists/:id", async (req, res) => {
   try {
-    const data = getData();
-    const list = data.lists.find((l) => l.id === req.params.id);
+    const list = await TaskList.findById(req.params.id);
     if (!list) return res.status(404).json({ message: "Liste introuvable" });
     res.json(list);
   } catch (err) {
