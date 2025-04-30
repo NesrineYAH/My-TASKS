@@ -11,9 +11,8 @@ const dotenv = require("dotenv").config();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/api/tasks", taskRoutes);
-app.use("/api/lists", taskListRoutes);
-
+const dataRoutes = require("./routes/data.routes");
+app.use("/api", dataRoutes);
 //app.use("/images", express.static(__dirname + "/images"));
 
 module.exports = app;

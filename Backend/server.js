@@ -1,52 +1,47 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
 const path = require("path");
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middlewares
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // important !
 
-// ✅ ROUTE POUR SERVIR UN FICHIER JSON STATIQUE
-app.get("/api/tasks.json", (req, res) => {
-  res.sendFile(path.join(__dirname, "api", "tasks.json"));
+// ✅ ROUTES CUSTOM POUR /api/data.json -> extraire les listes
+app.get("/api/lists", (req, res) => {
+  const data = require("./api/data.json");
+  const { name } = req.query;
+  let lists = data.lists;
+
+  if (name) {
+    lists = lists.filter((list) =>
+      list.name.toLowerCase().includes(name.toLowerCase())
+    );
+  }
+
+  res.json(lists);
 });
 
-app.get("/api/lists.json", (req, res) => {
-  res.sendFile(path.join(__dirname, "api", "lists.json"));
+app.get("/api/lists/:id", (req, res) => {
+  const data = require("./api/data.json");
+  const list = data.lists.find((l) => l.id === parseInt(req.params.id));
+  if (list) {
+    res.json(list);
+  } else {
+    res.status(404).json({ error: "Liste non trouvée" });
+  }
 });
 
-// Connexion MongoDB
-/*
-mongoose
-  .connect("mongodb://localhost:27017/taskmanager", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("✅ Connecté à MongoDB");
-  })
-  .catch((err) => {
-    console.error("❌ Erreur de connexion MongoDB:", err);
-  });
-*/
-// Routes API
-const taskRoutes = require("./routes/task.routes");
-const taskListRoutes = require("./routes/taskList.routes");
+// Tu peux faire pareil pour les tâches (facultatif pour l’instant)
 
-app.use("/api/tasks", taskRoutes);
-app.use("/api/lists", taskListRoutes);
-
-// Pour le déploiement Angular (optionnel pour prod)
+// 🔁 Servir les fichiers statiques Angular (prod uniquement)
 app.use(express.static(path.join(__dirname, "dist/frontend-name")));
 
+// Dernière route catch-all
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/frontend-name/index.html"));
 });
 
-// Lancement du serveur
 app.listen(PORT, () => {
   console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
 });

@@ -1,32 +1,34 @@
-// routes/taskRoutes.js
 const express = require("express");
 const router = express.Router();
-const Task = require("../models/Task"); // Ton modèle Mongoose
-const path = require("path");
+const Task = require("../models/Task");
 
-const listsFilePath = path.join(__dirname, "../api/lists.json");
-
-// GET toutes les tâches
-router.get("/id", (req, res) => {
+// ✅ GET toutes les tâches
+router.get("/", async (req, res) => {
   try {
-    const tasks = Task.find().sort({ createdAt: -1 });
-    res.json(tasks); // <= Envoie le JSON ici
+    const tasks = await Task.find().sort({ createdAt: -1 }); // 🟢 Ajout de "await"
+    res.json(tasks);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
-// PATCH /tasks/:id
-router.patch("/id", (req, res) => {
+
+// ✅ PATCH une tâche spécifique
+router.patch("/:id", async (req, res) => {
   try {
     const updates = req.body;
-    updates.updatedAt = new Date(); // Met à jour le timestamp
-    const task = Task.findByIdAndUpdate(req.params.id, updates, {
+    updates.updatedAt = new Date();
+
+    const task = await Task.findByIdAndUpdate(req.params.id, updates, {
       new: true,
-    });
-    if (!task) return res.status(404).send({ error: "Tâche introuvable" });
-    res.send(task);
+    }); // 🟢 Ajout de "await"
+
+    if (!task) {
+      return res.status(404).json({ error: "Tâche introuvable" });
+    }
+
+    res.json(task);
   } catch (err) {
-    res.status(500).send({ error: "Erreur lors de la mise à jour" });
+    res.status(500).json({ error: "Erreur lors de la mise à jour" });
   }
 });
 
