@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const fs = require("fs");
-const Task = require("./models/Task"); // modèle Mongoose
+const Task = require("../models/Task"); // modèle Mongoose
 
 // Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
-  const filePath = path.join(__dirname, "../api/data.json");
+  const filePath = path.join(__dirname, "../api/Data.json");
   const rawData = fs.readFileSync(filePath);
   return JSON.parse(rawData);
 };
