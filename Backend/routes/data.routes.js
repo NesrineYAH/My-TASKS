@@ -2,31 +2,29 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const fs = require("fs");
+const Task = require("./models/Task"); // modèle Mongoose
 
-// Lecture du fichier JSON centralisé
+// Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
   const filePath = path.join(__dirname, "../api/data.json");
   const rawData = fs.readFileSync(filePath);
   return JSON.parse(rawData);
 };
 
-// GET /api/tasks - toutes les tâches
-router.get("/tasks", (req, res) => {
+// ✅ GET /api/tasks - toutes les tâches depuis MongoDB
+router.get("/tasks", async (req, res) => {
   try {
-    const data = getData();
-    res.json(data.tasks);
+    const tasks = await Task.find(); // récupère toutes les tâches
+    res.json(tasks);
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Erreur lecture des tâches", error: err.message });
+    res.status(500).json({ message: "Erreur MongoDB", error: err.message });
   }
 });
 
-// GET /api/tasks/:id - tâche par ID
-router.get("/tasks/:id", (req, res) => {
+// ✅ GET /api/tasks/:id - tâche unique par ID MongoDB
+router.get("/tasks/:id", async (req, res) => {
   try {
-    const data = getData();
-    const task = data.tasks.find((t) => t.id === req.params.id);
+    const task = await Task.findById(req.params.id); // recherche par ID MongoDB
     if (!task) return res.status(404).json({ message: "Tâche introuvable" });
     res.json(task);
   } catch (err) {
@@ -34,7 +32,7 @@ router.get("/tasks/:id", (req, res) => {
   }
 });
 
-// GET /api/lists - toutes les listes
+// ✅ GET /api/lists - depuis le fichier JSON
 router.get("/lists", (req, res) => {
   try {
     const data = getData();
@@ -46,7 +44,7 @@ router.get("/lists", (req, res) => {
   }
 });
 
-// GET /api/lists/:id - liste par ID
+// ✅ GET /api/lists/:id - liste par ID (JSON local)
 router.get("/lists/:id", (req, res) => {
   try {
     const data = getData();

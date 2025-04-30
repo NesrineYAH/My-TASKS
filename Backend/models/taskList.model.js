@@ -1,18 +1,12 @@
-// models/taskList.model.js
-module.exports = (sequelize, DataTypes) => {
-  const TaskList = sequelize.define("TaskList", {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  });
+// models/TaskList.js
+const mongoose = require("mongoose");
 
-  TaskList.associate = (models) => {
-    TaskList.hasMany(models.Task, {
-      foreignKey: "listId",
-      as: "tasks",
-    });
-  };
+const taskListSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+});
 
-  return TaskList;
-};
+module.exports = mongoose.model("TaskList", taskListSchema);
