@@ -1,0 +1,21 @@
+{
+  "name": "Tasks-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dist": "^0.1.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "node": "^22.15.0",
+    "path-to-regexp": "^8.2.0",
+    "server.js": "^1.0.0"
+  }
+}
