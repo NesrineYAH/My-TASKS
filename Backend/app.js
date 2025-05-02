@@ -9,5 +9,6 @@ app.use(cors());
 app.use(express.json()); // Pour parser les JSON
 
 // Routes
-app.use("./api", dataRoutes);
+app.use("/api", dataRoutes);
+
 module.exports = app;
