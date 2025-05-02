@@ -13,13 +13,18 @@ const getData = () => {
 };
 
 // ✅ GET /api/tasks - toutes les tâches depuis MongoDB
-router.get("/tasks", async (req, res) => {
+/* changé 03/05 router.get("/tasks", async (req, res) => {
   try {
     const tasks = await Task.find(); // récupère toutes les tâches
     res.json(tasks);
   } catch (err) {
     res.status(500).json({ message: "Erreur MongoDB", error: err.message });
   }
+});
+*/
+router.get("/tasks", async (req, res) => {
+  const tasks = await Task.find(); // depuis MongoDB
+  res.json(tasks);
 });
 
 // ✅ GET /api/tasks/:id - tâche unique par ID MongoDB

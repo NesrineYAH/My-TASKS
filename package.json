@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/NesrineYAH/My-TASKS/issues"
   },
-  "homepage": "https://github.com/NesrineYAH/My-TASKS#readme"
+  "homepage": "https://github.com/NesrineYAH/My-TASKS#readme",
+  "dependencies": {
+    "mongosh": "^2.5.0"
+  }
 }
