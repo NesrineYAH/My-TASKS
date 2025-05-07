@@ -24,6 +24,8 @@ const getData = () => {
 */
 router.get("/tasks", async (req, res) => {
   const tasks = await Task.find(); // depuis MongoDB
+  console.log("✅ Requête GET /tasks reçue"); // debug
+
   res.json(tasks);
 });
 
@@ -33,6 +35,7 @@ router.get("/tasks/:id", async (req, res) => {
     const task = await Task.findById(req.params.id); // recherche par ID MongoDB
     if (!task) return res.status(404).json({ message: "Tâche introuvable" });
     res.json(task);
+    console.log("✅ Requête GET /tasks reçue"); // debug
   } catch (err) {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
@@ -56,6 +59,7 @@ router.get("/lists/:id", async (req, res) => {
     const list = await TaskList.findById(req.params.id);
     if (!list) return res.status(404).json({ message: "Liste introuvable" });
     res.json(list);
+    console.log("✅ Requête GET /list reçue"); // debug
   } catch (err) {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
