@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema(
   {
+    _id: string,
     title: {
       type: String,
       required: true,
@@ -29,6 +30,8 @@ const taskSchema = new mongoose.Schema(
       default: false,
     },
     dueDate: Date,
+    createdAt: Date,
+    updatedAt: Date,
   },
   {
     timestamps: true, // ajoute createdAt et updatedAt automatiquement

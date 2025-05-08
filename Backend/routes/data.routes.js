@@ -38,6 +38,44 @@ router.get("/tasks/:id", async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
 });
+// ✅ POST /api/tasks - ajouter une tâche
+router.post("/tasks", async (req, res) => {
+  try {
+    const task = new Task(req.body);
+    await task.save();
+    res.status(201).json(task);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Erreur lors de la création", error: err.message });
+  }
+});
+
+// ✅ PUT /api/tasks/:id - modifier une tâche
+router.put("/tasks/:id", async (req, res) => {
+  try {
+    const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!task) return res.status(404).json({ message: "Tâche introuvable" });
+    res.json(task);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Erreur lors de la mise à jour", error: err.message });
+  }
+});
+
+// ✅ DELETE /api/tasks/:id - supprimer une tâche
+router.delete("/tasks/:id", async (req, res) => {
+  try {
+    const result = await Task.findByIdAndDelete(req.params.id);
+    if (!result) return res.status(404).json({ message: "Tâche introuvable" });
+    res.json({ message: "Tâche supprimée avec succès" });
+  } catch (err) {
+    res.status(500).json({ message: "Erreur serveur", error: err.message });
+  }
+});
 
 // ✅ GET /api/lists - depuis le fichier JSON
 router.get("/lists", async (req, res) => {
