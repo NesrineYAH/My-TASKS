@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema(
   {
-    _id: string,
     title: {
       type: String,
       required: true,
@@ -23,6 +22,8 @@ const taskSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "TaskList", // Assure-toi que tu as ce modèle
       required: true,
+      //  type: String,
+      //  required: false,
     },
     category: String,
     reminder: {
