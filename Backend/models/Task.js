@@ -21,9 +21,9 @@ const taskSchema = new mongoose.Schema(
     listId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "TaskList", // Assure-toi que tu as ce modèle
-      required: true,
+      //  required: true,
       //  type: String,
-      //  required: false,
+      required: false,
     },
     category: String,
     reminder: {

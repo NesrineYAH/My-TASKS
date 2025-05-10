@@ -11,17 +11,7 @@ const getData = () => {
   const rawData = fs.readFileSync(filePath);
   return JSON.parse(rawData);
 };
-
-// ✅ GET /api/tasks - toutes les tâches depuis MongoDB
-/* changé 03/05 router.get("/tasks", async (req, res) => {
-  try {
-    const tasks = await Task.find(); // récupère toutes les tâches
-    res.json(tasks);
-  } catch (err) {
-    res.status(500).json({ message: "Erreur MongoDB", error: err.message });
-  }
-});
-*/
+// toute les routes de Tasks
 router.get("/tasks", async (req, res) => {
   const tasks = await Task.find(); // depuis MongoDB
   res.json(tasks);
@@ -76,7 +66,7 @@ router.delete("/tasks/:id", async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
 });
-
+// toute les routes de Tasks
 // ✅ GET /api/lists - depuis le fichier JSON
 router.get("/lists", async (req, res) => {
   try {
@@ -95,9 +85,21 @@ router.get("/lists/:id", async (req, res) => {
     const list = await TaskList.findById(req.params.id);
     if (!list) return res.status(404).json({ message: "Liste introuvable" });
     res.json(list);
-    //  console.log("✅ Requête GET /list reçue"); // debug
+    console.log("✅ Requête GET /list reçue"); // debug
   } catch (err) {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
+  }
+});
+// ajouter une liste
+router.post("/lists", async (req, res) => {
+  try {
+    const list = new TaskList(req.body);
+    await list.save();
+    res.status(201).json(list);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Erreur lors de la création", error: err.message });
   }
 });
 
