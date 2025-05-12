@@ -12,3 +12,12 @@ app.use(express.json()); // Pour parser les JSON
 app.use("/api", dataRoutes);
 
 module.exports = app;
+/*
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+*/

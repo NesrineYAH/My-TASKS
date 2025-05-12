@@ -10,7 +10,14 @@ const cors = require("cors");
 
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json()); // indispensable pour POST/PUT
 
 // 1. Sert tous les fichiers statiques (HTML, CSS, JS, images…) dans /public

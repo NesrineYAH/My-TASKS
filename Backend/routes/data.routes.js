@@ -9,11 +9,14 @@ const TaskList = require("../models/taskList");
 const getData = () => {
   const filePath = path.join(__dirname, "../api/Data.json");
   const rawData = fs.readFileSync(filePath);
+  const writeData = fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
   return JSON.parse(rawData);
 };
 // toute les routes de Tasks
 router.get("/tasks", async (req, res) => {
   const tasks = await Task.find(); // depuis MongoDB
+  //    const tasks = await Task.findById(req.params.id);
+
   res.json(tasks);
 });
 
@@ -66,7 +69,7 @@ router.delete("/tasks/:id", async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
 });
-// toute les routes de Tasks
+// toute les routes de Lists
 // ✅ GET /api/lists - depuis le fichier JSON
 router.get("/lists", async (req, res) => {
   try {
@@ -93,13 +96,46 @@ router.get("/lists/:id", async (req, res) => {
 // ajouter une liste
 router.post("/lists", async (req, res) => {
   try {
-    const list = new TaskList(req.body);
+    const list = new TaskList(req.body); // Crée une nouvelle instance du modèle TaskList avec les données reçues
+    // Enregistre dans MongoDB
     await list.save();
+    // Retourne la liste créée avec un code HTTP 201
     res.status(201).json(list);
   } catch (err) {
     res
       .status(400)
       .json({ message: "Erreur lors de la création", error: err.message });
+  }
+});
+
+// ✅ PUT /api/lists/:id - modifier une liste
+router.put("/lists/:id", async (req, res) => {
+  try {
+    const updatedList = await TaskList.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    if (!updatedList)
+      return res.status(404).json({ message: "Liste introuvable" });
+    res.json(updatedList);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Erreur lors de la mise à jour", error: err.message });
+  }
+});
+
+// ✅ DELETE /api/lists/:id - supprimer une liste
+router.delete("/lists/:id", async (req, res) => {
+  try {
+    const result = await TaskList.findByIdAndDelete(req.params.id);
+    if (!result) return res.status(404).json({ message: "Liste introuvable" });
+    res.json({ message: "Liste supprimée avec succès" });
+  } catch (err) {
+    res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
 });
 
