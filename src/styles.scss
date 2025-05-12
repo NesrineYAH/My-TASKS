@@ -1,29 +1,22 @@
-
-
-
-
 /*@import 'app/styles/ind';*/
 * {
     outline: none !important;
 }
 
+
+html {
+    height: 100%;
+    background-color: #3d3c3c;
+    color: white;
+}
+
 body {
-    background-color: #999191;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #171515;
+    color: white;
+
     height: 100%;
     display: contents;
-    overflow-x: hidden;
+    overflow-x: hidde
 }
-
-
-/** Common **/
-/*
-.mat-pseudo-checkbox-checked::after {
-    top: 6px !important;
-    left: 4px !important;
-}
-.mat-form-field-underline{
-    background-color: rgba(0, 0, 0, 0.21) !important;
-}
-    */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

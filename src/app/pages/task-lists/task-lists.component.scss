@@ -2,29 +2,80 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+
+}
+
+#lists {
+    cursor: pointer;
 }
 
 .list-item {
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
     background-color: #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* Les classes de couleur */
 .square-red {
     background-color: #e57373;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 .square-green {
     background-color: #81c784;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 .square-orange {
     background-color: #ffb74d;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
 .square-blue {
     background-color: #64b5f6;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 30px;
+    height: 40px;
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+
+}
+
+.btn {
+    width: 100px;
+}
+
+.Input {
+    height: 15px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.listeItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 300px;
+    padding: 10px;
+
+    span {
+        width: 100%;
+        margin-right: 50px;
+    }
 }

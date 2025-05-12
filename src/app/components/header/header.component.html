@@ -3,26 +3,21 @@
   <nav>
     <div class="left-nav">
       <ul>
-        <li>
-          <a routerLink="/lists/listsID" routerLinkActive="active"
+        <button>
+          <a routerLink="/lists/listsId" routerLinkActive="active"
             >Voir mes listes</a
           >
-        </li>
-        <li>
-          <a routerLink="/new-task">Ajouter une tâche</a>
-        </li>
+        </button>
+
         <li><a routerLink="/Home">Home</a></li>
         <li><a routerLink="/projects">Projets</a></li>
+        <button (click)="openDialog()">
+          <a routerLink="/new-task">Ajouter une tâche</a>
+        </button>
+        <button>
+          <a routerLink="/tasks">Toutes les tâches</a>
+        </button>
       </ul>
-      <button (click)="openDialog()">
-        <a routerLink="/new-task">Ajouter une tâche</a>
-      </button>
-      <button>
-        <a routerLink="/tasks">Toutes les tâches</a>
-      </button>
-      <button>
-        <a routerLink="/task-lists">Toutes les tâches</a>
-      </button>
     </div>
 
     <div class="right-nav">

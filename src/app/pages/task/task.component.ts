@@ -14,7 +14,7 @@ import { ListService } from '../../services/List.service';
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [CommonModule, FormsModule, TaskListsComponent],
+    imports: [CommonModule, FormsModule, TaskListsComponent],
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
@@ -24,7 +24,7 @@ export class TaskComponent implements OnInit {
   newTaskTitle: string = '';
   newTaskDescription: string = '';
   priority: 'low' | 'medium' | 'high' = 'medium';
-  listIds: number[] = []; // instead of: listId: number 
+  listIds: string[] = []; // instead of: listId: number -04/05
   selectedCategory: string = '';
 
   constructor(
@@ -43,10 +43,9 @@ export class TaskComponent implements OnInit {
 
   // Ensuite charger les tâches selon l’ID passé dans l’URL
   this.route.params.subscribe(params => {
-    const listIdParam = params['listId'];
-    const listId = Number(listIdParam);
+    const listId = params['listId'];
 
-    if (!isNaN(listId)) {
+    if (listId) {
       this.listIds = [listId]; // 👈 store it in array form
       this.loadTasksByList();
     } else {
@@ -67,42 +66,75 @@ loadTasksByList(): void {
       this.tasks = tasks;
     });
   }
-
-  changeStatus(task: Task, status: 'todo' | 'in_progress' | 'done'): void {
-    this.taskService.updateTask(task.id!, { status }).subscribe(updatedTask => {
-      task.status = updatedTask.status;
-      task.updatedAt = updatedTask.updatedAt;
+  changeStatus(task: Task, status: 'todo' | 'in_progress' | 'done' ): void {
+    this.taskService.updateTask(task._id!, { status }).subscribe(updated => {
+      task.status = updated.status;
+      task.updatedAt = updated.updatedAt;
     });
   }
 
+    updateTaskFull(task: Task): void {
+   const updatedFields = {
+    title: task.title,
+    category: task.category,
+    description: task.description,
+    priority: task.priority,
+    dueDate: task.dueDate,
+    status: task.status,
+    listId: task.listId  // <-- Important si tu veux changer la liste
+  };
+
+  this.taskService.updateTask(task._id!, updatedFields).subscribe(updated => {
+    // Met à jour l'objet local avec les nouvelles valeurs
+    Object.assign(task, updated);
+  });
+}
+
+
   toggleReminder(task: Task): void {
     const newReminder = !(task.reminder ?? false);
-    this.taskService.updateTask(task.id!, { reminder: newReminder }).subscribe(updatedTask => {
+    this.taskService.updateTask(task._id!, { reminder: newReminder }).subscribe(updatedTask => {
       task.reminder = updatedTask.reminder;
       task.updatedAt = updatedTask.updatedAt;
     });
   }
 
-  deleteTask(task: Task): void {
-    this.taskService.deleteTask(task.id!).subscribe(() => {
-      this.tasks = this.tasks.filter(t => t.id !== task.id);
-    });
-  }
+    deleteTask(task: Task): void {
+      this.taskService.deleteTask(task._id!).subscribe(() => {
+        this.tasks = this.tasks.filter(t => t._id !== task._id);
+      });
+    }
+    
+  addTask(): void {
+    if (!this.listIds[0]) {
+      alert("Erreur : aucune liste sélectionnée pour la tâche.");
+      return;
+    }
+    const newTask : Task = {
+     title: this.newTaskTitle, 
+      description: this.newTaskDescription,
+      status: 'todo',
+      listId: this.listIds[0],
+      priority : this.priority,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      reminder: false,   
+      category: '',  
+  } as Task;
+  console.log("Tâche envoyée au backend :", newTask);
 
-  addTask(title: string, description?: string, dueDate?: Date): void {
-    const newTask = new Task(this.newTaskTitle, 'todo', this.newTaskDescription);
-       // newTask.listId = this.listId;
-  // 👇 Choisir le premier listId (ou un autre logique métier)
-
-  newTask.listId = this.listIds[0];
-    newTask.priority = this.priority;
-
-    this.taskService.addTask(newTask).subscribe((createdTask) => {
+  this.taskService.addTask(newTask).subscribe({
+    next: (createdTask) => {
       this.tasks.push(createdTask);
-      alert('Bravo votre tache est ajoutée');
+      alert('✅ Tâche ajoutée avec succès');
       this.newTaskTitle = '';
       this.newTaskDescription = '';
-    });
+    },
+    error: (err) => {
+      console.error("Erreur lors de l'ajout :", err);
+      alert("❌ Échec de l'ajout de la tâche");
+    }
+  });
   }
 
   openNewTaskDialog(): void {
@@ -130,15 +162,33 @@ loadTasksByList(): void {
     return this.tasks.filter(t => t.category === this.selectedCategory);
   }
  
-/*
-  onSelectList(selectedList: { id: number, name: string }): void {
-    this.listIds = [selectedList.id];
-    this.loadTasksByList(); // recharge les tâches liées à cette liste
-  }*/
   onSelectList(list: TaskList): void {
     console.log('Liste sélectionnée :', list);
-    this.listIds = [list.id];
+    this.listIds = [list._id];
     this.loadTasksByList(); // recharge les tâches
   }
   
+
+  ////////////////////// création d'un modal pour modifer une tache edit-tasks 
+  
+  editingTask: Task | null =null;
+
+  startEdit(task: Task): void {
+    this.editingTask = { ...task };  // clone pour éviter les effets de bord
+  }
+  closeEdit(): void {
+    this.editingTask = null; 
+
+  }
+
+  saveEdit(): void {
+    if(!this.editingTask) return;
+
+
+  this.taskService.updateTask(this.editingTask._id!, this.editingTask).subscribe(updated => {
+const index = this.tasks.findIndex(t => t._id  === updated._id)
+if (index !== -1) this.tasks[index] = updated;
+this.closeEdit();
+  })
+  }
 }

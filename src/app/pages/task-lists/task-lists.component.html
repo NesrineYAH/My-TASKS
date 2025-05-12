@@ -1,9 +1,42 @@
-<div class="lists-container">
+<!-- <div class="lists-container">
   <div
     *ngFor="let list of lists"
     (click)="onSelectList(list)"
     [ngClass]="list.cssClass"
+    class="Input"
   >
     {{ list.name }}
+  </div>
+</div> -->
+
+<div>
+  <!-- Ajouter une nouvelle liste -->
+  <input
+    [(ngModel)]="newListName"
+    placeholder="Nom de la nouvelle liste"
+    class="Input"
+  />
+  <button (click)="addList()" class="btn">Ajouter</button>
+
+  <!-- Liste affichée -->
+  <div
+    class="listeItem"
+    *ngFor="let list of lists"
+    [ngClass]="list.cssClass"
+    (click)="onSelectList(list)"
+  >
+    <!-- Mode édition -->
+    <div *ngIf="editingListId === list._id" class="listeItem_button">
+      <input [(ngModel)]="editedListName" />
+      <button (click)="confirmEdit()">Valider</button>
+      <button (click)="cancelEdit()">Annuler</button>
+    </div>
+
+    <!-- Mode affichage -->
+    <div *ngIf="editingListId !== list._id" class="listeItem_button">
+      <span (click)="onSelectList(list)">{{ list.name }}</span>
+      <button (click)="startEdit(list)">✏️</button>
+      <button (click)="deleteList(list._id)">🗑️</button>
+    </div>
   </div>
 </div>

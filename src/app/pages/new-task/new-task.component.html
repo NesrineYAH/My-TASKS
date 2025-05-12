@@ -51,6 +51,13 @@
       <option>Autre</option>
     </select>
 
+    <!--ajouté 09/05/2025  -->
+    <label for="listId" class="labe">Choisir une liste : </label>
+    <select id="listId" name="listId" [(ngModel)]="task.listId" required>
+      <option *ngFor="let list of lists" [value]="list._id">
+        {{ list.name }}
+      </option>
+    </select>
     <input
       type="date"
       [(ngModel)]="task.dueDate"
