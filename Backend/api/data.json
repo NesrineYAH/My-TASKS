@@ -102,5 +102,12 @@
       "_id": "3",
       "name": "ListeSa"
     }
+  ], 
+  "projects": [ 
+    {
+      "name" : "Project One",
+      "description": "projet test vérification",
+      "category" : "Travail"
+    }
   ]
 }

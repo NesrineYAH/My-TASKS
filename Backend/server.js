@@ -29,6 +29,9 @@ app.use("/tasks", taskRoutes);
 const listRoutes = require("./routes/data.routes");
 app.use("/lists", listRoutes);
 
+const listRoutes = require("./routes/data.routes");
+app.use("/projects", projectRoutes);
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });

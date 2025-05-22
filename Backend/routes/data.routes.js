@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const Task = require("../models/Task"); // modèle Mongoose
 const TaskList = require("../models/taskList");
+const Project = require("../models/Project");
 
 // Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
@@ -20,7 +21,7 @@ router.get("/tasks", async (req, res) => {
   res.json(tasks);
 });
 
-// ✅ GET /api/tasks/:id - tâche unique par ID MongoDB
+// GET /api/tasks/:id - tâche unique par ID MongoDB
 router.get("/tasks/:id", async (req, res) => {
   try {
     const task = await Task.findById(req.params.id); // recherche par ID MongoDB
@@ -31,7 +32,7 @@ router.get("/tasks/:id", async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
 });
-// ✅ POST /api/tasks - ajouter une tâche
+//  POST /api/tasks - ajouter une tâche
 router.post("/tasks", async (req, res) => {
   try {
     const task = new Task(req.body);
@@ -44,7 +45,7 @@ router.post("/tasks", async (req, res) => {
   }
 });
 
-// ✅ PUT /api/tasks/:id - modifier une tâche
+//  PUT /api/tasks/:id - modifier une tâche
 router.put("/tasks/:id", async (req, res) => {
   try {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
@@ -59,7 +60,7 @@ router.put("/tasks/:id", async (req, res) => {
   }
 });
 
-// ✅ DELETE /api/tasks/:id - supprimer une tâche
+//  DELETE /api/tasks/:id - supprimer une tâche
 router.delete("/tasks/:id", async (req, res) => {
   try {
     const result = await Task.findByIdAndDelete(req.params.id);
@@ -70,7 +71,7 @@ router.delete("/tasks/:id", async (req, res) => {
   }
 });
 // toute les routes de Lists
-// ✅ GET /api/lists - depuis le fichier JSON
+//  GET /api/lists - depuis le fichier JSON
 router.get("/lists", async (req, res) => {
   try {
     const lists = await TaskList.find();
@@ -82,7 +83,7 @@ router.get("/lists", async (req, res) => {
   }
 });
 
-// ✅ GET /api/lists/:id - liste par ID (JSON local)
+//  GET /api/lists/:id - liste par ID (JSON local)
 router.get("/lists/:id", async (req, res) => {
   try {
     const list = await TaskList.findById(req.params.id);
@@ -108,7 +109,7 @@ router.post("/lists", async (req, res) => {
   }
 });
 
-// ✅ PUT /api/lists/:id - modifier une liste
+// PUT /api/lists/:id - modifier une liste
 router.put("/lists/:id", async (req, res) => {
   try {
     const updatedList = await TaskList.findByIdAndUpdate(
@@ -136,6 +137,68 @@ router.delete("/lists/:id", async (req, res) => {
     res.json({ message: "Liste supprimée avec succès" });
   } catch (err) {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
+  }
+});
+
+// Get all projects
+router.get("/", async (req, res) => {
+  try {
+    const projects = await Project.find();
+    res.json(projects);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// GET one project
+router.get("/:id", async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ message: "Projet non trouvé" });
+    res.json(project);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+//Create a new project
+router.post("/", async (req, res) => {
+  const project = new Project({
+    name: req.body.name,
+    description: req.body.description,
+  });
+  try {
+    const newProject = await project.save();
+    res.status(201).json(newProject);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// PUT Update a project
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedProject = await Project.findByIdAndUpdate(
+      req.params.id,
+      {
+        name: req.body.name,
+        description: req.body.description,
+      },
+      { new: true }
+    );
+    res.json(updatedProject);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// DELELTE a project
+router.delete("/:id", async (req, res) => {
+  try {
+    await Project.findByIdAndDelete(req.body.id);
+    res.json({ message: "Projet supprimé" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
