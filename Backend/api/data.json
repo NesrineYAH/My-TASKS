@@ -104,10 +104,6 @@
     }
   ], 
   "projects": [ 
-    {
-      "name" : "Project One",
-      "description": "projet test vérification",
-      "category" : "Travail"
-    }
+
   ]
 }

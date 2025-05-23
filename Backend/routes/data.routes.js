@@ -129,7 +129,7 @@ router.put("/lists/:id", async (req, res) => {
   }
 });
 
-// ✅ DELETE /api/lists/:id - supprimer une liste
+//  DELETE /api/lists/:id - supprimer une liste
 router.delete("/lists/:id", async (req, res) => {
   try {
     const result = await TaskList.findByIdAndDelete(req.params.id);
@@ -141,7 +141,7 @@ router.delete("/lists/:id", async (req, res) => {
 });
 
 // Get all projects
-router.get("/", async (req, res) => {
+router.get("/projects", async (req, res) => {
   try {
     const projects = await Project.find();
     res.json(projects);
@@ -151,7 +151,7 @@ router.get("/", async (req, res) => {
 });
 
 // GET one project
-router.get("/:id", async (req, res) => {
+router.get("/projects/:id", async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ message: "Projet non trouvé" });
@@ -162,12 +162,13 @@ router.get("/:id", async (req, res) => {
 });
 
 //Create a new project
-router.post("/", async (req, res) => {
-  const project = new Project({
-    name: req.body.name,
-    description: req.body.description,
-  });
+router.post("/projects", async (req, res) => {
   try {
+    const project = new Project({
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+    });
     const newProject = await project.save();
     res.status(201).json(newProject);
   } catch (err) {
@@ -176,13 +177,14 @@ router.post("/", async (req, res) => {
 });
 
 // PUT Update a project
-router.put("/:id", async (req, res) => {
+router.put("/projects/:id", async (req, res) => {
   try {
     const updatedProject = await Project.findByIdAndUpdate(
       req.params.id,
       {
         name: req.body.name,
         description: req.body.description,
+        category: req.body.category,
       },
       { new: true }
     );
@@ -193,7 +195,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELELTE a project
-router.delete("/:id", async (req, res) => {
+router.delete("/projects/:id", async (req, res) => {
   try {
     await Project.findByIdAndDelete(req.body.id);
     res.json({ message: "Projet supprimé" });

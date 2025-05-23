@@ -5,6 +5,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("./mongoDB/DB"); // ou chemin correct
 const cors = require("cors");
+const dataRoutes = require("./routes/data.routes");
 
 //const dotenv = require("dotenv").config();
 
@@ -29,7 +30,7 @@ app.use("/tasks", taskRoutes);
 const listRoutes = require("./routes/data.routes");
 app.use("/lists", listRoutes);
 
-const listRoutes = require("./routes/data.routes");
+const projectRoutes = require("./routes/data.routes");
 app.use("/projects", projectRoutes);
 
 app.get("*", (req, res) => {

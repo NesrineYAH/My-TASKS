@@ -3,6 +3,7 @@ const path = require("path");
 const mongoose = require("./mongoDB/DB"); // ton fichier de connexion
 const Task = require("./models/Task");
 const TaskList = require("./models/taskList"); // modèle correct
+const Project = require("./models/Project");
 
 // Connexion à MongoDB
 /*
@@ -21,13 +22,14 @@ mongoose
 const dataPath = path.join(__dirname, "api", "Data.json");
 
 const rawData = fs.readFileSync(dataPath);
-const { tasks, lists } = JSON.parse(rawData); // <<<<<< CORRIGÉ : rawData au lieu de rowData
+const { tasks, lists, projects } = JSON.parse(rawData); // <<<<<< CORRIGÉ : rawData au lieu de rowData
 
 async function seedDatabase() {
   try {
     // Suppression des anciennes données
     await Task.deleteMany({});
     await TaskList.deleteMany({});
+    await Project.deleteMany({});
 
     // Insertion des listes
     const createdLists = await TaskList.insertMany(
@@ -53,13 +55,23 @@ async function seedDatabase() {
         reminder: task.reminder || false,
         dueDate: task.dueDate || null,
       }));
-
     await Task.insertMany(tasksWithConvertedListId);
 
-    console.log("✅ Données importées avec succès !");
+    // ✅ Insertion des projets
+    if (projects && projects.length > 0) {
+      const formattedProjects = projects.map((proj) => ({
+        name: proj.name,
+        description: proj.description || "",
+        category: proj.category || "",
+        createdAt: proj.createdAt || new Date(),
+      }));
+      await Project.insertMany(formattedProjects);
+    }
+
+    console.log("Données importées avec succès !");
     process.exit(0);
   } catch (err) {
-    console.error("❌ Erreur lors de l'import :", err);
+    console.error(" Erreur lors de l'import :", err);
     process.exit(1);
   }
 }
