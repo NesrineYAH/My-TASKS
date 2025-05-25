@@ -1,9 +1,11 @@
-#taskSection {
-    width: 1400px;
-    background-color: rgb(28, 127, 220);
-}
-app-task-lists, 
+app-task-lists,
 app-task {
     display: block !important;
-  }
-  
+}
+
+#MyApp {
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}

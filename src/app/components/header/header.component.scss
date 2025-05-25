@@ -25,7 +25,10 @@ h1 {
 .left-nav,
 .right-nav {
   align-self: center;
-  width: 30%;
+  width: 42%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .right-nav {
@@ -59,4 +62,10 @@ a {
 .active {
   font-weight: 700;
   text-decoration: underline;
+}
+
+button {
+  width: 120px;
+  height:
+    40px;
 }

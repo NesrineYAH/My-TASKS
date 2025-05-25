@@ -5,14 +5,13 @@
     <option *ngFor="let cat of categories">{{ cat }}</option>
   </select>
 </div>
-<!-- Formulaire pour ajouter une tâche -->
+<!-- Formulaire pour ajouter une tâche        ✏️ -->
 
 <div id="Card_container">
   <div *ngFor="let task of filteredTasks()" class="task-card">
     <div id="Bloc">
       <h3>{{ task.title }} -</h3>
       <button (click)="startEdit(task)">
-        ✏️
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 14 14"
@@ -31,19 +30,20 @@
     <p><strong>Statut:</strong> {{ task.status }}</p>
     <p><strong>Priorité:</strong> {{ task.priority }}</p>
     <p><strong>Échéance:</strong> {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
-
-    <label class="LabelReminder">
-      <input
-        type="checkbox"
-        [checked]="task.reminder"
-        (change)="toggleReminder(task)"
-      />
-      Activer le rappel
-    </label>
-
-    <button (click)="changeStatus(task, 'in_progress')">En cours</button>
-    <button (click)="changeStatus(task, 'done')">Terminé</button>
-    <button (click)="deleteTask(task)">Supprimer</button>
+    <p>
+      <strong>Rappel:</strong>
+      <label class="LabelReminder">
+        <input
+          type="checkbox"
+          [checked]="task.reminder"
+          (change)="toggleReminder(task)"
+        />
+      </label>
+      <br />
+      <button (click)="changeStatus(task, 'in_progress')">En cours</button>
+      <button (click)="changeStatus(task, 'done')">Terminé</button>
+      <button (click)="deleteTask(task)">Supprimer</button>
+    </p>
   </div>
 </div>
 <!--

@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
-//import { ButtonComponent} from "../../components/button/button.component";
+import { AgendaComponent} from "./pages/agenda/agenda.component";
 import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './components/dashboard.component/dashboard.component'
+
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule ,RouterModule, HeaderComponent, DashboardComponent],
+  imports: [CommonModule, FormsModule ,RouterModule, HeaderComponent, AgendaComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

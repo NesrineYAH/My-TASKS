@@ -4,8 +4,9 @@
 }
 
 .go-to-lists-btn {
-    padding: 10px 20px;
-    background-color: #1976d2;
+    padding: 15px 20px;
+    width: 120px;
+
     border: none;
     border-radius: 5px;
     color: white;
@@ -16,4 +17,18 @@
 
 .go-to-lists-btn:hover {
     background-color: #125ea7;
+}
+
+#MyApp {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#partI {
+    width: 25%;
+}
+
+#partII {
+    width: 100%;
 }

@@ -28,8 +28,8 @@
     <!-- Mode édition -->
     <div *ngIf="editingListId === list._id" class="listeItem_button">
       <input [(ngModel)]="editedListName" />
-      <button (click)="confirmEdit()">Valider</button>
-      <button (click)="cancelEdit()">Annuler</button>
+      <button (click)="confirmEdit()">✅</button>
+      <button (click)="cancelEdit()">❌</button>
     </div>
 
     <!-- Mode affichage -->

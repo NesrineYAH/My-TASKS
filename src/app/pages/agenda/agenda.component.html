@@ -1,0 +1,32 @@
+<h2>Mon Agenda</h2>
+<p>Affichage des tâches selon le calendrier à venir...</p>
+<div class="calendar-container">
+  <div class="btn-group">
+    <button (click)="view = CalendarView.Month">Mois</button>
+    <button (click)="view = CalendarView.Week">Semaine</button>
+    <button (click)="view = CalendarView.Day">Jour</button>
+  </div>
+
+  <br />
+
+  <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    *ngIf="view === CalendarView.Month"
+  >
+  </mwl-calendar-month-view>
+
+  <mwl-calendar-week-view
+    [viewDate]="viewDate"
+    [events]="events"
+    *ngIf="view === CalendarView.Week"
+  >
+  </mwl-calendar-week-view>
+
+  <mwl-calendar-day-view
+    [viewDate]="viewDate"
+    [events]="events"
+    *ngIf="view === CalendarView.Day"
+  >
+  </mwl-calendar-day-view>
+</div>

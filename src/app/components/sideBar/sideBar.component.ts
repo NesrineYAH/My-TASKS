@@ -6,15 +6,17 @@ import { NewTaskComponent } from '../../pages/new-task/new-task.component';
 import { TaskListsComponent } from '../../pages/task-lists/task-lists.component';
 import { TaskService } from '../../services/task.service';
 import { ListService } from '../../services/List.service'; 
+import { RouterModule } from '@angular/router';
+
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-sideBar',
   standalone: true,
-  imports: [CommonModule, FormsModule, TaskComponent, NewTaskComponent, TaskListsComponent],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'] 
+  imports: [CommonModule, FormsModule,RouterModule , TaskComponent, TaskListsComponent, NewTaskComponent],
+  templateUrl:'./sideBar.component.html',
+  styleUrls: ['./sideBar.component.scss'] 
 })
-export class DashboardComponent implements OnInit {
+export class SideBarComponent implements OnInit {
   private taskService = inject(TaskService);
   private listService = inject(ListService);
 

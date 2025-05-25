@@ -1,2 +1,36 @@
-<p>projects works!</p>
-<p>projects works!</p><p>projects works!</p>
+<div class="container">
+  <h2>Mes Projets</h2>
+
+  <form class="form">
+    <input
+      [(ngModel)]="newProject.name"
+      name="name"
+      placeholder="Nom du projet"
+      required
+    />
+    <input
+      [(ngModel)]="newProject.description"
+      name="description"
+      placeholder="Description"
+    />
+    <input
+      [(ngModel)]="newProject.category"
+      name="category"
+      placeholder="Category"
+    />
+    <input
+      [(ngModel)]="newProject.category"
+      name="category"
+      placeholder="Category"
+    />
+    <button type="submit" (click)="addProject()">Ajouter</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let project of projects">
+      <strong>{{ project.name }}</strong> – {{ project.description }} -
+      <button>afficher le détail</button>
+      <button (click)="deleteProject(project._id!)">Supprimer</button>
+    </li>
+  </ul>
+</div>

@@ -1,11 +1,19 @@
-<div class="home-container">
-  <h1>Bienvenue sur Task Tracker 📝</h1>
-  <p>
-    Gérez vos tâches, vos projets et votre productivité en toute simplicité.
-  </p>
+<div id="MyApp">
+  <div id="partI">
+    <app-sideBar></app-sideBar>
+  </div>
 
-  <button>
-    Voir mes listes de tâches
-    <a routerLink="/task-lists" class="go-to-lists-btn"> </a>
-  </button>
+  <div id="partII">
+    <div class="home-container">
+      <h1>Bienvenue sur Task Tracker 📝</h1>
+      <p>
+        Gérez vos tâches, vos projets et votre productivité en toute simplicité.
+      </p>
+
+      <button>
+        Voir mes listes de tâches
+        <a routerLink="/tasks" class="go-to-lists-btn"> </a>
+      </button>
+    </div>
+  </div>
 </div>
