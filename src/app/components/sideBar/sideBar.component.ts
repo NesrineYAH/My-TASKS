@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-sideBar',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule , TaskComponent, TaskListsComponent, NewTaskComponent],
+  imports: [CommonModule, FormsModule,RouterModule, TaskComponent, TaskListsComponent, NewTaskComponent],
   templateUrl:'./sideBar.component.html',
   styleUrls: ['./sideBar.component.scss'] 
 })

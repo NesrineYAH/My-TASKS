@@ -13,6 +13,7 @@ export const appRoutes: Routes = [
 { path: 'agenda', component: AgendaComponent }, // accueil
   { path: 'lists', component: TaskListsComponent }, // page des listes
   { path: 'tasks', component: TaskComponent }, // page des tâches
+    { path: 'tasks/:taskId', component: TaskComponent },
   { path: 'new-list', component: TaskListsComponent }, // ou à changer ?
   { path: 'lists/:listId/new-task', component: NewTaskComponent },
   { path: 'lists/:listId', component: TaskComponent },

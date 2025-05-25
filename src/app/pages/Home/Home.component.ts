@@ -13,3 +13,10 @@ import { RouterModule } from '@angular/router';
 export class HomeComponent {
 
 }
+
+/*
+✅ Dans une app classique avec NgModule
+Dans une application non standalone, tu importes RouterModule une seule fois dans AppModule, et c’est suffisant pour tous les composants.
+
+Mais dans une application standalone comme la tienne, tu dois importer RouterModule dans chaque composant qui utilise une directive liée au routing.
+*/

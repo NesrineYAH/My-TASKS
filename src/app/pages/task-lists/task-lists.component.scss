@@ -1,7 +1,12 @@
 .lists-container {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 1400px;
+    width: 100%;
+    padding: 2%;
 
 }
 
@@ -70,6 +75,7 @@ button {
     display: flex;
     align-items: center;
     padding: 15px;
+
 }
 
 .listeItem {

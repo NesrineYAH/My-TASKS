@@ -9,16 +9,14 @@
   </div>
 </div> -->
 
-<div>
-  <!-- Ajouter une nouvelle liste -->
+<div class="lists-container">
   <input
     [(ngModel)]="newListName"
     placeholder="Nom de la nouvelle liste"
     class="Input"
   />
-  <button (click)="addList()" class="btn">Ajouter</button>
+  <button (click)="addList()" class="go-to-lists-btn">Ajouter</button>
 
-  <!-- Liste affichée -->
   <div
     class="listeItem"
     *ngFor="let list of lists"

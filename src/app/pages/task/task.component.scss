@@ -41,14 +41,20 @@
         font-size: 1.5rem;
         margin: 0;
         color: white;
+
+        border: 2px solid #8427e1;
+        box-shadow: 1px 1px 0px 2px #330222;
+        border-radius: 4px;
+        width: 84%;
+        padding: 4px;
     }
 
 
     p {
         font-size: 0.9rem;
-
+        line-height: 140%;
         color: white;
-        margin: 5px 0;
+        margin: 10px 0;
     }
 
     label {
@@ -67,7 +73,7 @@
 
     .LabelReminder {
         position: relative;
-        margin: 12%;
+        margin: 15%;
     }
 
 
