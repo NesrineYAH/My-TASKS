@@ -65,6 +65,8 @@
       "description": "all my tasks work",
       "status": "todo",
       "priority": "medium",
+            "dueDate": "2025-04-27",
+      "category": "Travail",
       "createdAt": "2025-04-25T22:55:50.861Z",
       "updatedAt": "2025-04-25T22:55:50.861Z"
     },
