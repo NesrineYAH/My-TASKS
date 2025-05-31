@@ -5,6 +5,7 @@ const fs = require("fs");
 const Task = require("../models/Task"); // modèle Mongoose
 const TaskList = require("../models/taskList");
 const Project = require("../models/Project");
+//const taskController = require("../Controller/taskController");
 
 // Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
@@ -71,12 +72,14 @@ router.delete("/tasks/:id", async (req, res) => {
   }
 });
 //31/05 add a route for display the tasks in list bloc
-
+/*
 router.get("/tasks/list/:listId", async (req, res) => {
   const tasks = await Task.find();
-
   res.json(tasks);
 });
+*/
+router.get("/tasks/list/:listId", taskController.getTasksByListId);
+console.log("Requête pour les tâches de la liste :", listId);
 
 // toute les routes de Lists
 //  GET /api/lists - depuis le fichier JSON
