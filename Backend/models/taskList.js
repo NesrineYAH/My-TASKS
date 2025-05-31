@@ -6,6 +6,7 @@ const taskListSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  
   description: String,
 });
 

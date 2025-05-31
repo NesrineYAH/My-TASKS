@@ -20,7 +20,7 @@ const taskSchema = new mongoose.Schema(
     },
     listId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "TaskList", // Assure-toi que tu as ce modèle
+      ref: "TaskList",
       //  required: true,
       //  type: String,
       required: false,

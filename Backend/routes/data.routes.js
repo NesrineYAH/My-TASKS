@@ -70,6 +70,14 @@ router.delete("/tasks/:id", async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", error: err.message });
   }
 });
+//31/05 add a route for display the tasks in list bloc
+
+router.get("/tasks/list/:listId", async (req, res) => {
+  const tasks = await Task.find();
+
+  res.json(tasks);
+});
+
 // toute les routes de Lists
 //  GET /api/lists - depuis le fichier JSON
 router.get("/lists", async (req, res) => {
