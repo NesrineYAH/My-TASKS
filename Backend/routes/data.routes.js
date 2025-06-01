@@ -5,7 +5,7 @@ const fs = require("fs");
 const Task = require("../models/Task"); // modèle Mongoose
 const TaskList = require("../models/taskList");
 const Project = require("../models/Project");
-//const taskController = require("../Controller/taskController");
+const taskController = require("../Controller/taskController");
 
 // Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
@@ -18,7 +18,6 @@ const getData = () => {
 router.get("/tasks", async (req, res) => {
   const tasks = await Task.find(); // depuis MongoDB
   //    const tasks = await Task.findById(req.params.id);
-
   res.json(tasks);
 });
 
@@ -79,7 +78,7 @@ router.get("/tasks/list/:listId", async (req, res) => {
 });
 */
 router.get("/tasks/list/:listId", taskController.getTasksByListId);
-console.log("Requête pour les tâches de la liste :", listId);
+console.log("Requête pour les tâches de la liste :");
 
 // toute les routes de Lists
 //  GET /api/lists - depuis le fichier JSON
