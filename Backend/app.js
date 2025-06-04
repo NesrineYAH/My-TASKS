@@ -14,6 +14,8 @@ app.use(
     credentials: true,
   })
 );
+app.use("/uploads", express.static("uploads"));
+
 /*
 app.get('/api/tasks/lists/projects/:id', (req, res) => {
   // retourne bien du JSON !
