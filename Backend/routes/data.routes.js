@@ -6,6 +6,7 @@ const Task = require("../models/Task"); // modèle Mongoose
 const TaskList = require("../models/taskList");
 const Project = require("../models/Project");
 const taskController = require("../Controller/taskController");
+const uploadFile = require("../Middlewars/multer-config"); // ✅ le chemin est à adapter
 
 // Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
@@ -81,8 +82,11 @@ router.get("/tasks/list/:listId", taskController.getTasksByListId);
 console.log("Requête pour les tâches de la liste :");
 
 // Route d’upload de fichier pour une tâche
-router.post("/tasks/:id/upload", upload.single("file"), async (req, res) => {
+router.post("/tasks/:id/upload", uploadFile, async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).json({ message: "Aucun fichier reçu" });
+    }
     const fileUrl = `/uploads/${req.file.filename}`;
 
     // Optionnel : mise à jour de la tâche dans MongoDB
@@ -91,7 +95,11 @@ router.post("/tasks/:id/upload", upload.single("file"), async (req, res) => {
       { $push: { attachements: fileUrl } },
       { new: true }
     );
-    res.json({ success: true, fileUrl, task });
+    res.status(200).json({
+      message: "Fichier uploadé avec succès",
+      fileUrl,
+      task: updatedTask,
+    });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
