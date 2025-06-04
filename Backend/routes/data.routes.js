@@ -80,6 +80,23 @@ router.get("/tasks/list/:listId", async (req, res) => {
 router.get("/tasks/list/:listId", taskController.getTasksByListId);
 console.log("Requête pour les tâches de la liste :");
 
+// Route d’upload de fichier pour une tâche
+router.post("/tasks/:id/upload", upload.single("file"), async (req, res) => {
+  try {
+    const fileUrl = `/uploads/${req.file.filename}`;
+
+    // Optionnel : mise à jour de la tâche dans MongoDB
+    const task = await Task.findByIdAndUpdate(
+      req.params.id,
+      { $push: { attachements: fileUrl } },
+      { new: true }
+    );
+    res.json({ success: true, fileUrl, task });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // toute les routes de Lists
 //  GET /api/lists - depuis le fichier JSON
 router.get("/lists", async (req, res) => {

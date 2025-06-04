@@ -21,11 +21,12 @@ const taskSchema = new mongoose.Schema(
     listId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "TaskList",
-      //  required: true,
-      //  type: String,
+      type: String,
       required: false,
     },
     category: String,
+    attachments: [String], // Tableau de chemins de fichiers ou d'URLs
+
     reminder: {
       type: Boolean,
       default: false,
