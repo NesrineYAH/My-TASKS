@@ -1,40 +1,59 @@
-<!-- <div class="lists-container">
-  <div
-    *ngFor="let list of lists"
-    (click)="onSelectList(list)"
-    [ngClass]="list.cssClass"
-    class="Input"
-  >
-    {{ list.name }}
-  </div>
-</div> -->
-
-<div class="lists-container">
+<div id="lists-containerI">
   <input
     [(ngModel)]="newListName"
     placeholder="Nom de la nouvelle liste"
     class="Input"
   />
-  <button (click)="addList()" class="go-to-lists-btn">Ajouter</button>
+  <button (click)="addList()" class="btnAdd">Ajouter</button>
+</div>
+<br />
+<br />
+<section class="lists-container">
+  <div class="listeItem" *ngFor="let list of lists" [ngClass]="list.cssClass">
+    <div class="listeItem__partI">
+      <h3 (click)="onSelectList(list)">
+        {{ list.name }}
+      </h3>
 
-  <div
-    class="listeItem"
-    *ngFor="let list of lists"
-    [ngClass]="list.cssClass"
-    (click)="onSelectList(list)"
-  >
-    <!-- Mode édition -->
-    <div *ngIf="editingListId === list._id" class="listeItem_button">
-      <input [(ngModel)]="editedListName" />
-      <button (click)="confirmEdit()">✅</button>
-      <button (click)="cancelEdit()">❌</button>
+      <div *ngIf="editingListId === list._id" class="listeItem_button">
+        <input [(ngModel)]="editedListName" />
+
+        <button (click)="confirmEdit()">✅</button>
+        <button (click)="cancelEdit()">❌</button>
+      </div>
+
+      <div *ngIf="editingListId !== list._id" class="listeItem_button">
+        <button (click)="confirmEdit()">+</button>
+        <button (click)="startEdit(list)">✏️</button>
+        <button (click)="deleteList(list._id!)">🗑️</button>
+        <button (click)="displayTask(list)">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 14 14"
+            fill="currentColor"
+            class="simpleIcons inherit icon simple"
+            style="font-size: inherit; width: 1em; height: 1em"
+          >
+            <circle cx="7" cy="1.5" r="1.5"></circle>
+            <circle cx="7" cy="7" r="1.5"></circle>
+            <circle cx="7" cy="12.5" r="1.5"></circle>
+          </svg>
+          {{ list.showTasks ? "❌" : "" }}
+        </button>
+      </div>
+    </div>
+    <div *ngIf="list.showTasks && hasTasks(list)" class="task-summary">
+      <ul>
+        <li *ngFor="let task of list.tasks" class="task-line">
+          {{ task.title }} — {{ getTaskStatus(task) }}
+          <input type="checkbox" [checked]="task.completed" disabled />
+        </li>
+      </ul>
     </div>
 
-    <!-- Mode affichage -->
-    <div *ngIf="editingListId !== list._id" class="listeItem_button">
-      <span (click)="onSelectList(list)">{{ list.name }}</span>
-      <button (click)="startEdit(list)">✏️</button>
-      <button (click)="deleteList(list._id)">🗑️</button>
+    <!-- Affichage si aucune tâche -->
+    <div *ngIf="list.showTasks && list.tasks?.length === 0">
+      <em>Aucune tâche dans cette liste.</em>
     </div>
   </div>
-</div>
+</section>

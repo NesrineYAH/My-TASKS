@@ -1,8 +1,8 @@
 export class Task {
   _id?: string; //  Dans MongoDB, l’identifiant _id est généralement de type string, car il est une chaîne hexadécimale (ex: "6631717e66eafc2e4cb5f1b3"), pas un nombre. id?: number; // ❌ Faux avec MongoDB
   title: string;
-  status: 'todo' | 'in_progress' | 'done';
   description?: string;
+  status: 'todo' | 'in_progress' | 'done';
   priority?: 'low' | 'medium' | 'high';
   dueDate?: Date;
   reminder?: boolean;
@@ -10,15 +10,28 @@ export class Task {
   updatedAt?: Date;
   category?: string;
   listId?: string; 
+  completed?: boolean;
+  notes?: string;
+  projectId?: string;
+  parentTaskId?: string;
+  subTasks?: Task[];
+attachments?: string[]; // ou File[] si tu veux stocker les fichiers côté frontend temporairement
 
   constructor(
     title: string,
-    status: 'todo' | 'in_progress' | 'done',
     description?: string,
     priority: 'low' | 'medium' | 'high' = 'medium',
+    status: 'todo' | 'in_progress' | 'done',
     dueDate?: Date, 
     category?: string,
-    listId?: string
+    listId?: string,
+  completed?: boolean,
+    notes?: string,
+  projectId?: string,
+  parentTaskId?: string,
+    subTasks?: Task[],
+    attachments?: string[],
+
 
   ) {
     this.title = title;
@@ -30,6 +43,12 @@ export class Task {
     this.createdAt = new Date();
     this.updatedAt = new Date();
     this.listId = listId;
+    this.completed = completed;
+    this.notes = notes,
+    this.projectId = projectId,
+    this.parentTaskId = parentTaskId,
+    this.subTasks = subTasks,
+    this.attachments = attachments
 
   }
 }

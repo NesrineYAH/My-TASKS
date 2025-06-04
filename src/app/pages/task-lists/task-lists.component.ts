@@ -1,13 +1,19 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskList } from '../../models/task-list.model';
+import { Task } from '../../models/Task';
 import { ListService  } from '../../services/List.service';
+import { TaskService  } from '../../services/task.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NewTaskComponent } from '../new-task/new-task.component';
+
+
 
 @Component({
   selector: 'app-task-lists',
   standalone: true,
-    imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-lists.component.html',
   styleUrls: ['./task-lists.component.scss']
 })
@@ -19,7 +25,9 @@ export class TaskListsComponent implements OnInit, OnChanges {
   editingListId: string | null= null;
   editedListName: string ='';
 
-  constructor( private listService: ListService) {}
+  constructor( private listService: ListService,
+               private taskService : TaskService,
+               private router: Router) {}
   randomColorIndex = 0;
 
   ngOnInit(): void {
@@ -53,8 +61,7 @@ export class TaskListsComponent implements OnInit, OnChanges {
   }
 
   onSelectList(list: TaskList): void {
-    this.selectList.emit(list);
-    console.log("Task lists on init:", this.lists);
+  this.selectList.emit(list);
   }
 
   addList(): void {
@@ -104,4 +111,40 @@ deleteList(_id: string): void {
   });
 }
 
+
+displayTask(list: TaskList): void {
+  if (!list.tasks) {
+    this.taskService.getTasksByListId(list._id!).subscribe((tasks: Task[]) => {
+      console.log("Tâches récupérées pour la liste :", list.name, tasks); // 👈 LOG
+      list.tasks = tasks;
+      list.showTasks = true;
+    });
+  } else {
+    list.showTasks = !list.showTasks;
+  }
 }
+
+getTaskStatus(task: Task): string {
+  if (task.completed === true) return 'Terminé';
+  if (task.completed === false) return 'À faire';
+  return 'En cours'; // ou selon ton système de statuts
+}
+
+hasTasks(list: TaskList): boolean {
+  return !!list.tasks && list.tasks.length > 0;
+}
+
+
+
+
+
+}
+
+/**
+ Que signifie !! en JavaScript/TypeScript ?
+Les deux points d'exclamation (!!) servent à convertir une valeur en un booléen explicite (true ou false).
+✅ Pourquoi !! ?
+Voici ce que fait !!list.tasks :
+Le premier !list.tasks transforme la valeur en falsey (undefined → true, donc !undefined = true).
+Le deuxième ! inverse à nouveau → on obtient un vrai booléen.
+ */

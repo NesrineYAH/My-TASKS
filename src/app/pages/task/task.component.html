@@ -5,7 +5,6 @@
     <option *ngFor="let cat of categories">{{ cat }}</option>
   </select>
 </div>
-<!-- Formulaire pour ajouter une tâche        ✏️ -->
 
 <div id="Card_container">
   <div *ngFor="let task of filteredTasks()" class="task-card">
@@ -46,29 +45,10 @@
     </p>
   </div>
 </div>
-<!--
-<input
-  type="text"
-  placeholder="Titre"
-  [(ngModel)]="newTaskTitle"
-  name="title"
-/>
 
-<textarea
-  placeholder="Description"
-  [(ngModel)]="newTaskDescription"
-  name="description"
-></textarea>
-<button (click)="addTask(newTaskTitle, newTaskDescription)">
-  Ajouter une tâche
-</button>
--->
-
-<!-- edit tasks 67 -113 -->
 <div *ngIf="editingTask" class="modal-backdrop">
   <div class="modal">
     <h2>Modifier la tâche</h2>
-
     <label
       >Titre:
       <input [(ngModel)]="editingTask.title" />
@@ -112,7 +92,7 @@
   </div>
 </div>
 <h2>📋 Listes</h2>
-<div id="ListContainer">
+<div>
   <app-task-lists [lists]="lists" (selectList)="onSelectList($event)">
   </app-task-lists>
 </div>

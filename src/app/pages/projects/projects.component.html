@@ -18,19 +18,56 @@
       name="category"
       placeholder="Category"
     />
-    <input
-      [(ngModel)]="newProject.category"
-      name="category"
-      placeholder="Category"
-    />
+
     <button type="submit" (click)="addProject()">Ajouter</button>
   </form>
 
   <ul>
     <li *ngFor="let project of projects">
+      <!-- <button (click)="">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 14 14"
+          fill="currentColor"
+          class="simpleIcons inherit icon simple"
+          style="font-size: inherit; width: 1em; height: 1em"
+        >
+          <circle cx="7" cy="1.5" r="1.5"></circle>
+          <circle cx="7" cy="7" r="1.5"></circle>
+          <circle cx="7" cy="12.5" r="1.5"></circle>
+        </svg>
+      </button> -->
       <strong>{{ project.name }}</strong> – {{ project.description }} -
       <button>afficher le détail</button>
-      <button (click)="deleteProject(project._id!)">Supprimer</button>
+      <button (click)="deleteProject(project._id!)">🗑️ Supprimer</button>
     </li>
   </ul>
+
+  <div *ngFor="let task of project.tasks">
+    <p>{{ task.title }} ({{ task.completed ? "✔️" : "❌" }})</p>
+
+    <textarea
+      [(ngModel)]="task.notes"
+      placeholder="Ajouter une note..."
+    ></textarea>
+    <button (click)="addNoteToTask(task._id!, task.notes)">
+      📌 Sauvegarder
+    </button>
+
+    <input
+      type="file"
+      (change)="attachFileToTask(task._id!, $event.target.files[0])"
+    />
+  </div>
+
+  <input [(ngModel)]="taskTitle" placeholder="Nouvelle tâche..." />
+  <input
+    [(ngModel)]="taskDescription"
+    placeholder="Description Nouvelle tâche..."
+  />
+
+  <button (click)="addTaskToProject(project._id!, taskTitle, taskDescription)">
+    ➕ Ajouter tâche
+  </button>
+  <input type="file" (change)="onFileSelected($event, task._id!)" />
 </div>

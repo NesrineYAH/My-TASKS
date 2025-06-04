@@ -3,9 +3,9 @@ import { Task } from '../../models/Task';
 import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NewTaskComponent } from '../new-task/new-task.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router'; 
+import { NewTaskComponent } from '../new-task/new-task.component';
 import { TaskListsComponent } from '../task-lists/task-lists.component'; // ajuste le chemin si nécessaire
 import { TaskList } from '../../models/task-list.model';
 import { ListService } from '../../services/List.service';
@@ -73,7 +73,7 @@ loadTasksByList(): void {
     });
   }
 
-    updateTaskFull(task: Task): void {
+  updateTaskFull(task: Task): void {
    const updatedFields = {
     title: task.title,
     category: task.category,
@@ -99,11 +99,11 @@ loadTasksByList(): void {
     });
   }
 
-    deleteTask(task: Task): void {
+  deleteTask(task: Task): void {
       this.taskService.deleteTask(task._id!).subscribe(() => {
         this.tasks = this.tasks.filter(t => t._id !== task._id);
       });
-    }
+  }
     
   addTask(): void {
     if (!this.listIds[0]) {
@@ -163,8 +163,8 @@ loadTasksByList(): void {
   }
  
   onSelectList(list: TaskList): void {
-    console.log('Liste sélectionnée :', list);
-    this.listIds = [list._id];
+  //  console.log('Liste sélectionnée :', list);
+    this.listIds = [list._id!];
     this.loadTasksByList(); // recharge les tâches
   }
   
@@ -178,17 +178,15 @@ loadTasksByList(): void {
   }
   closeEdit(): void {
     this.editingTask = null; 
-
   }
 
   saveEdit(): void {
     if(!this.editingTask) return;
 
-
   this.taskService.updateTask(this.editingTask._id!, this.editingTask).subscribe(updated => {
-const index = this.tasks.findIndex(t => t._id  === updated._id)
-if (index !== -1) this.tasks[index] = updated;
-this.closeEdit();
+  const index = this.tasks.findIndex(t => t._id  === updated._id)
+  if (index !== -1) this.tasks[index] = updated;
+  this.closeEdit();
   })
   }
 }
