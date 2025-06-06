@@ -17,6 +17,7 @@
     "mongodb": "^6.16.0",
     "mongoose": "^8.15.0",
     "mongosh": "^2.5.0",
+    "multer": "^2.0.1",
     "node": "^22.15.0",
     "node.js": "^0.0.1-security",
     "path": "^0.12.7",
