@@ -1,0 +1,125 @@
+.lists-container {
+  max-width: 1500px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#lists {
+  cursor: pointer;
+}
+
+/* Les classes de couleur */
+.square-red {
+  background-color: #e57373;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.square-green {
+  background-color: #81c784;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.square-orange {
+  background-color: #ffb74d;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.square-blue {
+  background-color: #64b5f6;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 30px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  align-items: center;
+  border: none;
+}
+button:hover {
+  transform: scale(1.5);
+}
+
+.lists-containerI {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  row-gap: 40px;
+}
+
+.btnAdd {
+  width: 80px;
+  background-color: #c22e8e;
+  border-radius: 4px;
+  margin-left: 15px;
+}
+
+.Input {
+  height: 35px;
+  border-radius: 4px;
+}
+
+.listeItem {
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.listeItem__partI {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.listeItem_button {
+  background-color: transparent;
+}
+.listeItem_button span {
+  width: 100%;
+  margin-right: 50px;
+}
+
+.task-summary {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid #ccc;
+  width: 100%;
+}
+
+.task-row {
+  padding: 6px 12px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.task-line {
+  flex: 1;
+  font-weight: 500;
+  color: #fff;
+}
+
+.task-status {
+  text-align: center;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #ddd;
+}

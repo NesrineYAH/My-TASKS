@@ -5,7 +5,7 @@
 
 html {
   height: 100%;
-  background-color: #8f3e65;
+  background-color: #59042d;
   color: white;
 }
 
@@ -16,5 +16,5 @@ body {
   color: white;
   height: 100%;
   display: contents;
-  overflow-x: hidde;
+  overflow-x: hidden;
 }

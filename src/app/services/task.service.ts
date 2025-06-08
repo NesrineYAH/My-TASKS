@@ -44,11 +44,8 @@ updateTask(id: string, updates: Partial<Task>): Observable<Task> {
  return this.http.get<Task[]>(`/api/tasks/list/${listId}`);
   }
 
-  uploadFile(taskId: string, file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file);
+uploadFile(taskId: string, formData: FormData): Observable<{ fileUrl: string }> {
+  return this.http.post<{ fileUrl: string }>(`/api/tasks/${taskId}/upload`, formData);
+}
 
-    return this.http.post(`${this.apiUrl}/tasks/${taskId}/upload`, formData);
-    
-  }
 }

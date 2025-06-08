@@ -15,23 +15,22 @@ export class Task {
   projectId?: string;
   parentTaskId?: string;
   subTasks?: Task[];
-attachments?: string[]; // ou File[] si tu veux stocker les fichiers côté frontend temporairement
+  attachments?: string[]; // ou File[] si tu veux stocker les fichiers côté frontend temporairement
 
   constructor(
-    title: string,
+    title: string,   
+    status: 'todo' | 'in_progress' | 'done',
     description?: string,
     priority: 'low' | 'medium' | 'high' = 'medium',
-    status: 'todo' | 'in_progress' | 'done',
     dueDate?: Date, 
     category?: string,
     listId?: string,
-  completed?: boolean,
+    completed?: boolean,
     notes?: string,
-  projectId?: string,
-  parentTaskId?: string,
+    projectId?: string,
+    parentTaskId?: string,
     subTasks?: Task[],
     attachments?: string[],
-
 
   ) {
     this.title = title;

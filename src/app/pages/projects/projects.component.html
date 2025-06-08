@@ -43,21 +43,25 @@
     </li>
   </ul>
 
-  <div *ngFor="let task of project.tasks">
-    <p>{{ task.title }} ({{ task.completed ? "✔️" : "❌" }})</p>
+  <div *ngFor="let task of project?.tasks">
+    <p>
+      {{ task?.title }}
+      ({{ task?.completed ? "✅" : "❌" }})
+    </p>
 
     <textarea
       [(ngModel)]="task.notes"
       placeholder="Ajouter une note..."
     ></textarea>
+
     <button (click)="addNoteToTask(task._id!, task.notes)">
       📌 Sauvegarder
     </button>
 
-    <input
+    <!-- <input
       type="file"
       (change)="attachFileToTask(task._id!, $event.target.files[0])"
-    />
+    /> -->
   </div>
 
   <input [(ngModel)]="taskTitle" placeholder="Nouvelle tâche..." />
@@ -66,8 +70,9 @@
     placeholder="Description Nouvelle tâche..."
   />
 
-  <button (click)="addTaskToProject(project._id!, taskTitle, taskDescription)">
+  <button (click)="addTaskToProject(project._id, taskTitle, taskDescription)">
     ➕ Ajouter tâche
   </button>
-  <input type="file" (change)="onFileSelected($event, task._id!)" />
+
+  <input type="file" (change)="onFileSelected($event, task_id)" />
 </div>

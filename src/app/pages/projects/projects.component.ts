@@ -20,6 +20,16 @@ export class ProjectComponent implements OnInit {
   newProject: Project = { name: '', description: '', category : ''};
  tasks: Task[] = [];
 
+ taskTitle: string = '';
+taskDescription: string = '';
+task_id: string = ''; // ou un autre type selon ta logique
+project: {
+  _id: string;
+  tasks: Task[];
+} = {
+  _id: 'example-id', // ou null si tu veux le remplir plus tard
+  tasks: [],
+};// ou injecté par @Input()
 
   constructor(private projectService: ProjectService,
               private taskService: TaskService) {}
@@ -48,6 +58,7 @@ addTaskToProject(projectId: string, taskTitle: string, taskDescription: string):
   const newTask: Task = {
    title: taskTitle, 
    description: taskDescription,
+     status: 'todo',    
    completed: false,
     projectId
   };
@@ -64,7 +75,7 @@ addTaskToProject(projectId: string, taskTitle: string, taskDescription: string):
 addSubTask(parentTaskId: string, title: string): void {
   const subTask: Task = {
     title,
-    status,
+      status: 'todo',    
     completed: false,
     parentTaskId
   };
@@ -88,27 +99,30 @@ addNoteToTask(taskId: string, note: string): void {
 }
 
 // add attach file for project 
-
 attachFileToTask(taskId: string, file: File): void {
   const formData = new FormData();
   formData.append('file', file);
 
-  this.taskService.uploadFile(taskId, file).subscribe(response => {
+  this.taskService.uploadFile(taskId, formData).subscribe(response => {
     const task = this.tasks.find(t => t._id === taskId);
     if (task) {
       task.attachments = task.attachments || [];
-      task.attachments.push(response.fileUrl);
+      task.attachments.push(response.fileUrl); // Assure-toi que fileUrl est bien renvoyé
     }
   });
 }
 
 onFileSelected(event: Event, taskId: string) {
-  const fileInput = event.target as HTMLInputElement;     // ???????????????????????
+  const fileInput = event.target as HTMLInputElement;     // Cette ligne est correcte. Elle permet d'accéder à files via le type HTML correct (sinon target est de type EventTarget trop générique).
+  
   if (fileInput.files && fileInput.files.length > 0) {
     const file = fileInput.files[0];
 
+      const formData = new FormData();
+  formData.append('file', file);
+
     // Envoie directement le fichier à la méthode
-    this.taskService.uploadFile(taskId, file).subscribe({
+    this.taskService.uploadFile(taskId, formData).subscribe({
       next: (response) => {
         console.log('Fichier uploadé avec succès :', response);
       },
@@ -124,3 +138,10 @@ onFileSelected(event: Event, taskId: string) {
 
 
 }
+
+
+/**
+ * task._id! : L’opérateur ! dit à TypeScript "je suis sûr que _id n'est pas undefined".
+
+Or, si task._id n’est pas assuré d’exister, TypeScript te met un trait rouge.
+ */
