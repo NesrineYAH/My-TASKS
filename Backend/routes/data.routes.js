@@ -6,7 +6,8 @@ const Task = require("../models/Task"); // modèle Mongoose
 const TaskList = require("../models/taskList");
 const Project = require("../models/Project");
 const taskController = require("../Controller/taskController");
-const uploadFile = require("../Middlewars/multer-config"); // ✅ le chemin est à adapter
+const fileFilter = require("../Middlewars/multer-config"); // ✅ le chemin est à adapter
+const multer = require("../Middlewars/multer-config");
 
 // Lecture du fichier JSON centralisé (pour les listes uniquement)
 const getData = () => {
@@ -82,7 +83,7 @@ router.get("/tasks/list/:listId", taskController.getTasksByListId);
 console.log("Requête pour les tâches de la liste :");
 
 // Route d’upload de fichier pour une tâche
-router.post("/tasks/:id/upload", uploadFile, async (req, res) => {
+router.post("/tasks/:id/upload", fileFilter, async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "Aucun fichier reçu" });
@@ -103,6 +104,10 @@ router.post("/tasks/:id/upload", uploadFile, async (req, res) => {
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
+});
+router.post("/tasks/:id/upload", upload.single("file"), (req, res) => {
+  const fileUrl = `/uploads/${req.file.filename}`; // ou URL complète
+  res.json({ fileUrl });
 });
 
 // toute les routes de Lists
