@@ -3,8 +3,7 @@ const cors = require("cors");
 const mongoose = require("./mongoDB/DB"); // Connexion à MongoDB
 const app = express();
 const dataRoutes = require("./routes/data.routes");
-const fileFilter = require("../Middlewars/multer-config"); // ✅ le chemin est à adapter
-const multer = require("../Middlewars/multer-config");
+const upload = require("./Middlewars/multer-config");
 
 // Middlewares
 // app.use(cors());

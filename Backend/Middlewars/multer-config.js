@@ -14,6 +14,9 @@ const storage = multer.diskStorage({
   filename: (req, file, callback) => {
     const name = file.originalname.split(" ").join("_").split(".")[0]; // évite de doubler l'extension
     const extension = MIME_TYPES[file.mimetype];
+    if (!extension) {
+      return callback(new Error("Extension de fichier non reconnue"), null);
+    }
     callback(null, name + "_" + Date.now() + "." + extension);
   },
 });
@@ -25,5 +28,9 @@ const fileFilter = (req, file, callback) => {
     callback(new Error("Type de fichier non autorisé"), false);
   }
 };
+const upload = multer({ storage, fileFilter });
+module.exports = upload;
 
-module.exports = multer({ storage: storage }).single("file");
+//module.exports = multer({ storage: storage }).single("file");
+// Ici on ajoute `fileFilter`
+//module.exports = multer({ storage, fileFilter }).single("file");
