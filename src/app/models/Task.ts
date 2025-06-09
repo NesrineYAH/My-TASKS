@@ -11,7 +11,7 @@ export class Task {
   category?: string;
   listId?: string; 
   completed?: boolean;
-  notes?: string;
+  notes?: string; 
   projectId?: string;
   parentTaskId?: string;
   subTasks?: Task[];

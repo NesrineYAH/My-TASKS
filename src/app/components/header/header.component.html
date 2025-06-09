@@ -7,7 +7,6 @@
           >Voir mes listes</a
         >
       </button>
-
       <button><a routerLink="/Home">Home</a></button>
       <button><a routerLink="/projects">Projets</a></button>
       <button (click)="openDialog()">
@@ -20,23 +19,22 @@
     </div>
 
     <div class="right-nav">
-      <!-- <ul>
-        <li>
-          <a routerLink="signup" routerLinkActive="active" *ngIf="!(isAuth$ | async)">
-            SIGN UP
-          </a>
-        </li>
-        <li>
-          <a routerLink="login" routerLinkActive="active" *ngIf="!(isAuth$ | async)">
-            LOGIN
-          </a>
-        </li>
-        <li>
-          <a (click)="onLogout()" *ngIf="isAuth$ | async">
-            LOGOUT
-          </a>
-        </li>
-      </ul> -->
+      <button>
+        SIGN UP
+        <!-- <a routerLink="signup" routerLinkActive="active" *ngIf="!(isAuth$ | async)">  </a> -->
+      </button>
+      <button>
+        LOGIN
+        <!-- <a routerLink="login" routerLinkActive="active" *ngIf="!(isAuth$ | async)"></a> -->
+      </button>
+      <button>
+        LOGOUT
+        <!-- <a (click)="onLogout()" *ngIf="isAuth$ | async"> LOGOUT </a> -->
+      </button>
     </div>
+    <button>
+      GENERATE REPORT
+      <!-- <a (click)="onLogout()" *ngIf="isAuth$ | async"> LOGOUT </a> -->
+    </button>
   </nav>
 </div>

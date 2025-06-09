@@ -4,14 +4,13 @@ import { Project } from '../../models/project.model';
 import { Task } from '../../models/Task';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TaskComponent } from '../task/task.component';
 import { TaskService } from '../../services/task.service';
-import { NewTaskComponent } from '../new-task/new-task.component';
+// import { error } from 'node:console';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-      imports: [CommonModule, FormsModule, TaskComponent],
+      imports: [CommonModule, FormsModule],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
@@ -99,39 +98,32 @@ addNoteToTask(taskId: string, note: string): void {
 }
 
 // add attach file for project 
-attachFileToTask(taskId: string, file: File): void {
+attachFileToTask(taskId: string, event: Event): void {
+
+  const input = event.target as HTMLInputElement; 
+if(input.files && input.files.length > 0) {
+ const file = input.files[0];
+
   const formData = new FormData();
   formData.append('file', file);
-
-  this.taskService.uploadFile(taskId, formData).subscribe(response => {
+  
+this.taskService.uploadFile(taskId, formData).subscribe(response => {
     const task = this.tasks.find(t => t._id === taskId);
-    if (task) {
+       
+         if (task) {
       task.attachments = task.attachments || [];
       task.attachments.push(response.fileUrl); // Assure-toi que fileUrl est bien renvoyé
-    }
-  });
-}
-
-onFileSelected(event: Event, taskId: string) {
-  const fileInput = event.target as HTMLInputElement;     // Cette ligne est correcte. Elle permet d'accéder à files via le type HTML correct (sinon target est de type EventTarget trop générique).
-  
-  if (fileInput.files && fileInput.files.length > 0) {
-    const file = fileInput.files[0];
-
-      const formData = new FormData();
-  formData.append('file', file);
-
-    // Envoie directement le fichier à la méthode
-    this.taskService.uploadFile(taskId, formData).subscribe({
-      next: (response) => {
-        console.log('Fichier uploadé avec succès :', response);
-      },
-      error: (error) => {
-        console.error('Erreur lors de l\'upload', error);
+      console.log('Fichier uploadé avec succès :', response);
+    } else  {
+        console.error('Erreur lors de l\'upload');
       }
-    });
-  }
+  });
+} 
+  
+    
+  
 }
+
 
 
 
