@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent implements OnInit {
-  
+
   signupForm!: FormGroup;
   loading!: boolean;
   errorMsg!: string;
@@ -20,5 +20,9 @@ export class SignupComponent implements OnInit {
               private auth: AuthService,
               private router: Router) { }
 
-
+  ngOnInit() { 
+    this.signupForm = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+    })
+  }
 }
