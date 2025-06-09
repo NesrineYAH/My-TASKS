@@ -8,6 +8,7 @@ import { NewTaskComponent } from '../../pages/new-task/new-task.component';
 
 @Component({
   selector: 'app-header',
+    standalone: true,
   imports: [CommonModule, RouterModule, MatDialogModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

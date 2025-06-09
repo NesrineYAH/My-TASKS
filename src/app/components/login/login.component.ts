@@ -5,6 +5,7 @@ import { catchError, EMPTY, tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
