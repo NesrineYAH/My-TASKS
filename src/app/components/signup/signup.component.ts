@@ -11,8 +11,14 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent implements OnInit {
+  
+  signupForm!: FormGroup;
+  loading!: boolean;
+  errorMsg!: string;
 
   constructor(private formBuilder: FormBuilder,
               private auth: AuthService,
               private router: Router) { }
+
+
 }
