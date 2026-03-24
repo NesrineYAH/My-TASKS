@@ -85,6 +85,14 @@ Tu peux aussi ouvrir des issues pour proposer des idées ou signaler des bugs.
 Ce projet est open source et entièrement gratuit. Si vous appréciez mon travail et souhaitez m’aider à continuer à développer ce type d’outils en attendant de trouver un emploi stable, un petit don est le bienvenu. Il me permet de tenir, tout simplement. Merci du fond du cœur pour votre soutien.
 Si vous souhaitez soutenir mon travail :
 
+
 👉 BuyMeACoffee : https://buymeacoffee.com/nesrinedeveloper
 👉 Ko‑fi : https://ko-fi.com/nesrine
 👉 PayPal :https://www.paypal.com/paypalme/NesrineYAHOUM
+
+
+### ☕ Support Me
+
+[![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/nesrinedeveloper)
+[![Ko‑fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/nesrine)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/paypalme/NesrineYAHOUM)
