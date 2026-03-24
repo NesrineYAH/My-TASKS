@@ -96,3 +96,6 @@ Si vous souhaitez soutenir mon travail :
 [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/nesrinedeveloper)
 [![Ko‑fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/nesrine)
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/paypalme/NesrineYAHOUM)
+
+![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
