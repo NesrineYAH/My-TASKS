@@ -1,0 +1,40 @@
+<div class="header">
+  <h1>My TASKS MANAGER</h1>
+  <nav>
+    <div class="left-nav">
+      <button>
+        <a routerLink="/lists/listsId" routerLinkActive="active"
+          >Voir mes listes</a
+        >
+      </button>
+      <button><a routerLink="/Home">Home</a></button>
+      <button><a routerLink="/projects">Projets</a></button>
+      <button (click)="openDialog()">
+        <a routerLink="/new-task">Ajouter une tâche</a>
+      </button>
+      <button>
+        <a routerLink="/tasks">Toutes les tâches</a>
+      </button>
+      <button><a routerLink="/agenda">Agenda</a></button>
+    </div>
+
+    <div class="right-nav">
+      <button>
+        SIGN UP
+        <!-- <a routerLink="signup" routerLinkActive="active" *ngIf="!(isAuth$ | async)">  </a> -->
+      </button>
+      <button>
+        LOGIN
+        <!-- <a routerLink="login" routerLinkActive="active" *ngIf="!(isAuth$ | async)"></a> -->
+      </button>
+      <button>
+        LOGOUT
+        <!-- <a (click)="onLogout()" *ngIf="isAuth$ | async"> LOGOUT </a> -->
+      </button>
+    </div>
+    <button>
+      GENERATE REPORT
+      <!-- <a (click)="onLogout()" *ngIf="isAuth$ | async"> LOGOUT </a> -->
+    </button>
+  </nav>
+</div>

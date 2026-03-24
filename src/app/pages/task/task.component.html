@@ -1,0 +1,98 @@
+<div class="category-filter">
+  <label for="category">Filtrer par catégorie :</label>
+  <select [(ngModel)]="selectedCategory" name="category">
+    <option value="">Toutes</option>
+    <option *ngFor="let cat of categories">{{ cat }}</option>
+  </select>
+</div>
+
+<div id="Card_container">
+  <div *ngFor="let task of filteredTasks()" class="task-card">
+    <div id="Bloc">
+      <h3>{{ task.title }} -</h3>
+      <button (click)="startEdit(task)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 14 14"
+          fill="currentColor"
+          class="simpleIcons inherit icon simple"
+          style="font-size: inherit; width: 1em; height: 1em"
+        >
+          <circle cx="7" cy="1.5" r="1.5"></circle>
+          <circle cx="7" cy="7" r="1.5"></circle>
+          <circle cx="7" cy="12.5" r="1.5"></circle>
+        </svg>
+      </button>
+    </div>
+    <p><strong>categorie:</strong>{{ task.category }}</p>
+    <p><strong>Description:</strong> {{ task.description }}</p>
+    <p><strong>Statut:</strong> {{ task.status }}</p>
+    <p><strong>Priorité:</strong> {{ task.priority }}</p>
+    <p><strong>Échéance:</strong> {{ task.dueDate | date : "dd/MM/yyyy" }}</p>
+    <p>
+      <strong>Rappel:</strong>
+      <label class="LabelReminder">
+        <input
+          type="checkbox"
+          [checked]="task.reminder"
+          (change)="toggleReminder(task)"
+        />
+      </label>
+      <br />
+      <button (click)="changeStatus(task, 'in_progress')">En cours</button>
+      <button (click)="changeStatus(task, 'done')">Terminé</button>
+      <button (click)="deleteTask(task)">Supprimer</button>
+    </p>
+  </div>
+</div>
+
+<div *ngIf="editingTask" class="modal-backdrop">
+  <div class="modal">
+    <h2>Modifier la tâche</h2>
+    <label
+      >Titre:
+      <input [(ngModel)]="editingTask.title" />
+    </label>
+
+    <label
+      >Description:
+      <textarea [(ngModel)]="editingTask.description"></textarea>
+    </label>
+
+    <label
+      >Catégorie:
+      <input [(ngModel)]="editingTask.category" />
+    </label>
+
+    <label
+      >Priorité:
+      <select [(ngModel)]="editingTask.priority">
+        <option value="low">Faible</option>
+        <option value="medium">Moyenne</option>
+        <option value="high">Haute</option>
+      </select>
+    </label>
+
+    <label
+      >Date:
+      <input type="date" [(ngModel)]="editingTask.dueDate" />
+    </label>
+
+    <label
+      >Liste:
+      <select [(ngModel)]="editingTask.listId">
+        <option *ngFor="let list of lists" [value]="list._id">
+          {{ list.name }}
+        </option>
+      </select>
+    </label>
+
+    <button (click)="saveEdit()">✅ Sauvegarder</button>
+    <button (click)="closeEdit()">❌ Annuler</button>
+  </div>
+</div>
+<h2>📋 Listes</h2>
+<div>
+  <app-task-lists [lists]="lists" (selectList)="onSelectList($event)">
+  </app-task-lists>
+</div>

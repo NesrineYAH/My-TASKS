@@ -1,0 +1,11 @@
+app-task-lists,
+app-task {
+    display: block !important;
+}
+
+#MyApp {
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}

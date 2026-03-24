@@ -1,0 +1,34 @@
+.home-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.go-to-lists-btn {
+    padding: 15px 20px;
+    width: 120px;
+
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.go-to-lists-btn:hover {
+    background-color: #125ea7;
+}
+
+#MyApp {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#partI {
+    width: 25%;
+}
+
+#partII {
+    width: 100%;
+}

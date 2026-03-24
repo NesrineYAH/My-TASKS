@@ -1,0 +1,176 @@
+#Card_container {
+    margin-top: 50px;
+    max-width: 1600px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.task-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(53, 47, 47, 0.1);
+    padding: 20px;
+    margin: 15px 0;
+    background-color: #23014a;
+    transition: transform 0.2s ease-in-out;
+    gap: 10px;
+    width: 280px;
+    border: 2px solid rgb(17, 17, 17);
+    opacity: 0.8;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    #Bloc {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .simpleIcons {
+        color: #df1472;
+        font-size: 25px;
+        opacity: 1;
+        width: 25px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin: 0;
+        color: white;
+        border: 2px solid #8427e1;
+        box-shadow: 1px 1px 0px 2px #330222;
+        border-radius: 4px;
+        width: 84%;
+        padding: 4px;
+    }
+
+
+    p {
+        font-size: 0.9rem;
+        line-height: 140%;
+        color: white;
+        margin: 10px 0;
+    }
+
+    label {
+        font-size: 1rem;
+        cursor: pointer;
+        gap: 8px;
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #007bff; // Couleur bleue pour le checkbox
+        }
+    }
+
+    .LabelReminder {
+        position: relative;
+        margin: 15%;
+    }
+
+    button {
+        padding: 8px 8px;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+        color: #1d1c1c;
+        font-weight: bold;
+
+        &:nth-child(2) {
+            background: #f4f0ea;
+        }
+
+        // En cours (Orange)
+        &:nth-child(3) {
+            background: #4caf50;
+        }
+
+        // Terminé (Vert)
+        &:nth-child(4) {
+            background: #f44336;
+        }
+
+        // Supprimer (Rouge)
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .My_Button {
+        color: #2c09aa;
+    }
+}
+
+.category-filter {
+    width: 300px;
+    margin-left: 10px;
+
+    select {
+        height: 35px;
+    }
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .task-card {
+        padding: 15px;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p,
+    label {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.modal {
+    background: rgb(177, 174, 174);
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 300px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+label,
+input,
+select,
+textarea {
+    width: 100%;
+
+}
+
+#ListContainer {
+
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,98 @@
+<div class="container">
+  <h2>Mes Projets</h2>
+
+  <form class="form">
+    <input
+      [(ngModel)]="newProject.name"
+      name="name"
+      placeholder="Nom du projet"
+      required
+    />
+    <input
+      [(ngModel)]="newProject.description"
+      name="description"
+      placeholder="Description"
+    />
+    <input
+      [(ngModel)]="newProject.category"
+      name="category"
+      placeholder="Category"
+    />
+
+    <button type="submit" (click)="addProject()">Ajouter</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let project of projects">
+      <!-- <button (click)="">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 14 14"
+          fill="currentColor"
+          class="simpleIcons inherit icon simple"
+          style="font-size: inherit; width: 1em; height: 1em"
+        >
+          <circle cx="7" cy="1.5" r="1.5"></circle>
+          <circle cx="7" cy="7" r="1.5"></circle>
+          <circle cx="7" cy="12.5" r="1.5"></circle>
+        </svg>
+      </button> -->
+      <strong>{{ project.name }}</strong> – {{ project.description }} -
+      <button>
+        afficher le détail
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 14 14"
+          fill="currentColor"
+          class="simpleIcons inherit icon simple"
+          style="font-size: inherit; width: 1em; height: 1em"
+        >
+          <circle cx="7" cy="1.5" r="1.5"></circle>
+          <circle cx="7" cy="7" r="1.5"></circle>
+          <circle cx="7" cy="12.5" r="1.5"></circle>
+        </svg>
+      </button>
+      <button (click)="deleteProject(project._id!)">🗑️ Supprimer</button>
+      <div *ngFor="let task of project?.tasks">
+        <p>
+          {{ task?.title }}
+          ({{ task?.completed ? "✅" : "❌" }})
+        </p>
+        <textarea
+          [(ngModel)]="task.notes"
+          placeholder="Ajouter une note..."
+        ></textarea>
+        <button (click)="addNoteToTask(task._id!, task.notes!)">
+          ajouter une note
+        </button>
+        <input type="file" (change)="attachFileToTask(task._id!, $event)" />
+      </div>
+
+      <input [(ngModel)]="taskTitle" placeholder="Nouvelle tâche..." />
+      <input [(ngModel)]="taskDescription" placeholder="Description..." />
+      <button
+        (click)="addTaskToProject(project._id!, taskTitle, taskDescription)"
+      >
+        ➕
+      </button>
+      <strong></strong>
+    </li>
+  </ul>
+
+  <!-- <input type="file" (change)="attachFileToTask(task._id!, $event)" /> -->
+</div>
+
+<!--
+❓ Cause probable
+TypeScript ne peut pas garantir que event.target est un HTMLInputElement, donc il affiche une erreur.
+
+❓ ponit dexclaamation ! task.notes!
+Oui, techniquement c’est correct, mais ce n’est pas toujours recommandé.''
+
+
+ Que fait le point d’exclamation ! ?
+Il s’agit du non-null assertion operator en TypeScript. En ajoutant task.notes!, tu dis à TypeScript :
+"Je te promets que task.notes ne sera jamais null ou undefined à cet endroit."
+ Quand l'utiliser
+Tu peux utiliser task.notes! si tu es absolument sûr que task.notes aura une valeur non undefined ou non null au moment du clic.
+-->
