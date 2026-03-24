@@ -69,15 +69,13 @@
       </div>
 
       <input [(ngModel)]="taskTitle" placeholder="Nouvelle tâche..." />
-      <input
-        [(ngModel)]="taskDescription"
-        placeholder="Description Nouvelle tâche..."
-      />
+      <input [(ngModel)]="taskDescription" placeholder="Description..." />
       <button
         (click)="addTaskToProject(project._id!, taskTitle, taskDescription)"
       >
         ➕
       </button>
+      <strong></strong>
     </li>
   </ul>
 
@@ -90,6 +88,7 @@ TypeScript ne peut pas garantir que event.target est un HTMLInputElement, donc i
 
 ❓ ponit dexclaamation ! task.notes!
 Oui, techniquement c’est correct, mais ce n’est pas toujours recommandé.''
+
 
  Que fait le point d’exclamation ! ?
 Il s’agit du non-null assertion operator en TypeScript. En ajoutant task.notes!, tu dis à TypeScript :

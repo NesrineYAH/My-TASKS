@@ -5,6 +5,7 @@ import { Task } from '../../models/Task';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { error } from 'node:console';
 
 @Component({
@@ -26,7 +27,7 @@ project: {
   _id: string;
   tasks: Task[];
 } = {
-  _id: 'example-id', // ou null si tu veux le remplir plus tard
+  _id: 'example-id', 
   tasks: [],
 };// ou injecté par @Input()
 
